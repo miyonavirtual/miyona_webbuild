@@ -8,8 +8,7 @@ import { Sparkles, User, Settings2, Play, Shirt } from "lucide-react";
 import { useState, useEffect } from "react";
 import { db, auth } from "@/lib/firebase/client";
 import { doc, getDoc, setDoc, collection, getDocs, query, orderBy, limit } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
-
+import { onAuthStateChanged } from "firebase/auth";import { ProUpgradeCard } from "@/components/ProUpgradeCard";
 export default function MyMiyonaPage() {
     const [persona, setPersona] = useState("");
     const [isSaving, setIsSaving] = useState(false);
@@ -176,6 +175,9 @@ export default function MyMiyonaPage() {
                                             <p className="text-xs md:text-sm text-muted-foreground">Outfits coming soon</p>
                                         </div>
                                     </section>
+                                </div>
+                                <div className="mt-8 mb-4">
+                                   <ProUpgradeCard className="w-full bg-black/40 border-white/5" />
                                 </div>
                             </div>
                         </ScrollArea>

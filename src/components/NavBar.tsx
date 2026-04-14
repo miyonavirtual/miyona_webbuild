@@ -5,6 +5,7 @@ import { Settings, Phone, MessageSquare, Gem, Sparkles, BrainCircuit } from "luc
 import { useState, useEffect } from "react";
 import { auth } from "@/lib/firebase/client";
 import { SettingsModal } from "@/components/SettingsModal";
+import { ProUpgradeCard } from "@/components/ProUpgradeCard";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -108,6 +109,11 @@ export function NavBar({ rightContent }: NavBarProps) {
                 onClose={() => setIsSettingsOpen(false)}
                 onProfileUpdate={fetchUsername}
             />
+
+            {/* Fixed Dashboard Pro Pop-up / Widget (Bottom Left) */}
+            <div className="fixed bottom-8 left-6 z-50 pointer-events-auto">
+                <ProUpgradeCard className="transform scale-90 origin-bottom-left hover:scale-95 transition-all w-[240px]" />
+            </div>
         </>
     );
 }

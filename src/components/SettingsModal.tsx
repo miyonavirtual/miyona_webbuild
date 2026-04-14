@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { Loader2, AlertCircle, Moon, Sun, Type, ALargeSmall } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useTextSettings } from "@/components/TextSettingsProvider";
+import { ProUpgradeCard } from "@/components/ProUpgradeCard";
 
 interface SettingsModalProps {
     isOpen: boolean;
@@ -194,6 +195,10 @@ export function SettingsModal({ isOpen, onClose, onProfileUpdate }: SettingsModa
                                     Large
                                 </Button>
                             </div>
+                        </div>
+
+                        <div className="w-full pt-6">
+                            <ProUpgradeCard className="w-full bg-black/40 border-white/5" />
                         </div>
                     </div>
 
