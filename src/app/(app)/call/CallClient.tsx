@@ -5,7 +5,7 @@ import { Unity, useUnityContext } from "react-unity-webgl";
 import { Mic, MicOff, PhoneOff, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { db, auth } from "@/lib/firebase/client";
-import { collection, query, orderBy, addDoc, serverTimestamp, getDocs, limit } from "firebase/firestore";
+import { collection, query, orderBy, addDoc, serverTimestamp, getDocs, limit, doc, getDoc, setDoc } from "firebase/firestore";
 import { onAuthStateChanged, User } from "firebase/auth";
 import { toast } from "sonner";
 
@@ -25,10 +25,42 @@ export default function CallClient() {
     const isProcessingRef = useRef(false);
     const isMutedRef = useRef(isMuted);
     const [statusText, setStatusText] = useState("Muted");
+    const sessionTimeRef = useRef(0); // Tracks seconds spent talking
 
     useEffect(() => {
         isMutedRef.current = isMuted;
     }, [isMuted]);
+
+    // Timer logic: For every 3 minutes (180 seconds) in active call (unmuted), add 100 coins
+    useEffect(() => {
+        if (isMuted || !isCalling || !user) return;
+
+        const interval = setInterval(async () => {
+            sessionTimeRef.current += 1;
+            
+            if (sessionTimeRef.current !== 0 && sessionTimeRef.current % 180 === 0) {
+                // Award 100 coins
+                try {
+                    const walletRef = doc(db, "users", user.uid, "wallet", "balances");
+                    const walletSnap = await getDoc(walletRef);
+                    if (walletSnap.exists()) {
+                        const currentCoins = walletSnap.data().coins || 0;
+                        await setDoc(walletRef, { coins: currentCoins + 100 }, { merge: true });
+                    } else {
+                        await setDoc(walletRef, { gems: 17, coins: 2100 }, { merge: true });
+                    }
+                    toast.success("100 Coins Earned!", {
+                        description: "Thanks for spending 3 minutes with Miyona.",
+                        icon: "🪙"
+                    });
+                } catch (error) {
+                    console.error("Failed to award coins:", error);
+                }
+            }
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, [isMuted, isCalling, user]);
 
     const { unityProvider, isLoaded, loadingProgression, sendMessage } = useUnityContext({
         loaderUrl: "/MiyonaWebBuild_CallOne/Build/MiyonaWebBuild_CallOne.loader.js",
