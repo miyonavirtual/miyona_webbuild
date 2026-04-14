@@ -1,3 +1,3 @@
 {
-  "installCommand": "git remote add origin https://github.com/miyonavirtual/miyona_webbuild.git || true && git fetch origin main && git lfs pull origin main && npm install"
+  "installCommand": "node download-lfs.js && npm install"
 }
