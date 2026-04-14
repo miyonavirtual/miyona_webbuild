@@ -48,7 +48,6 @@
 
   --animate-pulse-slow: pulse-slow 3s ease-in-out infinite;
   --animate-float: float 3s ease-in-out infinite;
-  --animate-space: space 30s linear infinite;
 
   @keyframes pulse-slow {
     0%, 100% { opacity: 0.3; }
@@ -59,56 +58,43 @@
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
   }
-  
-  @keyframes space {
+
+  @keyframes space-drift {
     0% { background-position: 0% 0%; }
     100% { background-position: 100% 100%; }
   }
-
-  @keyframes cosmic-nebula {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 100% 100%; }
-  }
-
-  @keyframes cosmic-twinkle {
-    0% { opacity: 0.1; transform: scale(0.9); }
-    100% { opacity: 1; transform: scale(1.1); }
-  }
-
 }
 
 :root {
   --radius: 1.5rem;
 
-  /* Polished Dark Theme - Cosmic Purple & Black */
-  --background: oklch(0.12 0.02 290); /* Very dark space black-blue */
-  --foreground: oklch(0.95 0.01 290); /* Soft white with purple tint */
+  /* Polished Dark Theme - Void/Cosmic Purple & Black */
+  --background: oklch(0.05 0.01 290); /* Near perfect black with a tiny hint of purple */
+  --foreground: oklch(0.95 0.01 290); 
 
-  --card: oklch(0.15 0.03 290);
+  --card: oklch(0.1 0.02 290);
   --card-foreground: oklch(0.95 0.01 290);
 
-  --popover: oklch(0.15 0.03 290);
+  --popover: oklch(0.1 0.02 290);
   --popover-foreground: oklch(0.95 0.01 290);
 
-  /* Primary: Cosmic Purple (bright) */
-  --primary: oklch(0.65 0.25 300);
+  --primary: oklch(0.65 0.25 300); /* Neon Purple */
   --primary-foreground: oklch(0.1 0.05 290);
 
-  /* Secondary: Elevated surface for Miyona bubbles */
-  --secondary: oklch(0.20 0.1 300);
+  --secondary: oklch(0.15 0.08 300);
   --secondary-foreground: oklch(0.9 0.05 300);
 
-  --muted: oklch(0.20 0.05 290);
+  --muted: oklch(0.15 0.03 290);
   --muted-foreground: oklch(0.7 0.05 290);
 
-  --accent: oklch(0.25 0.15 300);
+  --accent: oklch(0.20 0.1 300);
   --accent-foreground: oklch(0.95 0.05 300);
 
   --destructive: oklch(0.5 0.2 25);
   --destructive-foreground: oklch(1 0 0);
 
-  --border: oklch(0.25 0.1 300);
-  --input: oklch(0.20 0.05 290);
+  --border: oklch(0.15 0.05 300);
+  --input: oklch(0.10 0.03 290);
   --ring: oklch(0.65 0.25 300);
 
   --chart-1: oklch(0.65 0.25 300);
@@ -117,41 +103,41 @@
   --chart-4: oklch(0.4 0.2 290);
   --chart-5: oklch(0.8 0.15 310);
 
-  --sidebar: oklch(0.12 0.02 290);
+  --sidebar: oklch(0.08 0.01 290);
   --sidebar-foreground: oklch(0.95 0.01 290);
   --sidebar-primary: oklch(0.65 0.25 300);
   --sidebar-primary-foreground: oklch(0.1 0.05 290);
-  --sidebar-accent: oklch(0.20 0.1 300);
+  --sidebar-accent: oklch(0.15 0.05 300);
   --sidebar-accent-foreground: oklch(0.95 0.01 290);
-  --sidebar-border: oklch(0.25 0.1 300);
+  --sidebar-border: oklch(0.15 0.05 300);
   --sidebar-ring: oklch(0.65 0.25 300);
 }
 
 .dark {
-  /* Enforce Cosmic theme on both Light and Dark to overwrite previous blush styles */
-  --background: oklch(0.10 0.03 290);
+  /* Enforce Cosmic theme on both Light and Dark */
+  --background: oklch(0.05 0.01 290);
   --foreground: oklch(0.98 0.01 290);
 
-  --card: oklch(0.14 0.04 290);
+  --card: oklch(0.1 0.02 290);
   --card-foreground: oklch(0.98 0.01 290);
 
-  --popover: oklch(0.14 0.04 290);
+  --popover: oklch(0.1 0.02 290);
   --popover-foreground: oklch(0.98 0.01 290);
 
   --primary: oklch(0.70 0.30 300);
   --primary-foreground: oklch(0.10 0.03 290);
 
-  --secondary: oklch(0.22 0.12 300);
+  --secondary: oklch(0.15 0.08 300);
   --secondary-foreground: oklch(0.95 0.05 300);
 
-  --muted: oklch(0.20 0.06 290);
+  --muted: oklch(0.15 0.03 290);
   --muted-foreground: oklch(0.7 0.1 300);
 
-  --accent: oklch(0.28 0.18 300);
+  --accent: oklch(0.20 0.1 300);
   --accent-foreground: oklch(0.98 0.05 300);
 
-  --border: oklch(0.28 0.12 300);
-  --input: oklch(0.22 0.08 290);
+  --border: oklch(0.15 0.05 300);
+  --input: oklch(0.10 0.03 290);
   --ring: oklch(0.70 0.30 300);
 }
 
@@ -171,27 +157,21 @@
   }
 
   .bg-glass {
-    @apply bg-black/40 backdrop-blur-xl border border-primary/20 shadow-[0_0_15px_rgba(171,75,255,0.1)];
+    @apply bg-black/40 backdrop-blur-xl border border-white/5;
   }
 
   .bg-glass-chat {
-    @apply bg-black/20 backdrop-blur-md border border-white/5;
-  }
-
-  .bg-seductive-gradient {
-    /* Cosmic subtle gradient */
-    background: radial-gradient(circle at top right, oklch(0.4 0.25 300 / 0.25), transparent 40%),
-      radial-gradient(circle at bottom left, oklch(0.1 0.1 260), transparent);
+    @apply bg-black/10 backdrop-blur-2xl border border-white/5;
   }
 
   .bg-cosmic-animation {
-    background-color: #04010d;
+    background-color: #020006; /* Abyssal Deep Purple-Black */
     background-image: 
-      radial-gradient(circle at 10% 20%, rgba(138, 43, 226, 0.45) 0%, transparent 45%),
-      radial-gradient(circle at 90% 80%, rgba(148, 0, 211, 0.35) 0%, transparent 55%),
-      radial-gradient(circle at 50% 50%, rgba(75, 0, 130, 0.25) 0%, transparent 60%);
-    background-size: 200% 200%;
-    animation: cosmic-nebula 20s ease-in-out infinite alternate;
+      radial-gradient(120% 100% at 50% 0%, rgba(90, 20, 140, 0.15) 0%, transparent 50%),
+      radial-gradient(100% 100% at 80% 80%, rgba(50, 5, 80, 0.2) 0%, transparent 60%),
+      radial-gradient(80% 80% at 10% 90%, rgba(30, 0, 50, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(130, 40, 255, 0.05) 0%, transparent 80%);
+    background-attachment: fixed;
     position: relative;
     overflow: hidden;
   }
@@ -200,32 +180,36 @@
   .bg-cosmic-animation::after {
     content: "";
     position: absolute;
-    top: -50%; left: -50%; right: -50%; bottom: -50%;
+    top: 0; left: 0; right: 0; bottom: 0;
     pointer-events: none;
-    z-index: 1;
+    z-index: 0;
   }
 
   .bg-cosmic-animation::before {
     background-image: 
-      radial-gradient(1.5px 1.5px at 15% 25%, rgba(255, 255, 255, 0.9) 1px, transparent 0),
-      radial-gradient(2px 2px at 35% 45%, rgba(255, 255, 255, 0.8) 1.5px, transparent 0),
-      radial-gradient(1px 1px at 55% 75%, rgba(255, 255, 255, 0.7) 1px, transparent 0),
-      radial-gradient(1.5px 1.5px at 85% 20%, rgba(255, 255, 255, 1) 2px, transparent 0),
-      radial-gradient(2px 2px at 90% 85%, rgba(255, 255, 255, 0.9) 1px, transparent 0);
+      radial-gradient(1px 1px at 15% 25%, rgba(255, 255, 255, 0.4) 1px, transparent 0),
+      radial-gradient(1.5px 1.5px at 35% 45%, rgba(255, 255, 255, 0.3) 1.5px, transparent 0),
+      radial-gradient(1px 1px at 55% 75%, rgba(255, 255, 255, 0.2) 1px, transparent 0),
+      radial-gradient(2px 2px at 85% 20%, rgba(255, 255, 255, 0.5) 2px, transparent 0),
+      radial-gradient(1px 1px at 90% 85%, rgba(255, 255, 255, 0.4) 1px, transparent 0);
     background-size: 300px 300px;
-    animation: cosmic-twinkle 4s ease-in-out infinite alternate;
+    animation: cosmic-twinkle 6s ease-in-out infinite alternate;
   }
 
   .bg-cosmic-animation::after {
     background-image: 
-      radial-gradient(2px 2px at 20% 60%, rgba(255, 255, 255, 0.7) 1.5px, transparent 0),
-      radial-gradient(1.5px 1.5px at 45% 15%, rgba(255, 255, 255, 0.5) 1px, transparent 0),
-      radial-gradient(2px 2px at 75% 45%, rgba(255, 255, 255, 0.8) 2px, transparent 0),
-      radial-gradient(1.5px 1.5px at 65% 90%, rgba(255, 255, 255, 0.7) 1px, transparent 0);
+      radial-gradient(1.5px 1.5px at 20% 60%, rgba(255, 255, 255, 0.3) 1.5px, transparent 0),
+      radial-gradient(1px 1px at 45% 15%, rgba(255, 255, 255, 0.2) 1px, transparent 0),
+      radial-gradient(1.5px 1.5px at 75% 45%, rgba(255, 255, 255, 0.4) 2px, transparent 0),
+      radial-gradient(1px 1px at 65% 90%, rgba(255, 255, 255, 0.3) 1px, transparent 0);
     background-size: 400px 400px;
-    animation: cosmic-twinkle 6s ease-in-out infinite alternate-reverse;
+    animation: cosmic-twinkle 8s ease-in-out infinite alternate-reverse;
   }
 
+  @keyframes cosmic-twinkle {
+    0% { opacity: 0.3; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.05); }
+  }
 }
 
 /* Typography Custom Settings */

@@ -321,11 +321,11 @@ export default function ChatClient() {
             </div>
 
             {/* RIGHT / BOTTOM SIDE: Chat panel (Responsive) */}
-            <div className="relative w-full h-[50vh] md:w-[460px] md:h-full z-30 flex flex-col md:shadow-[-20px_0_60px_-15px_rgba(0,0,0,0.5)] bg-black/40 backdrop-blur-3xl border border-white/10 md:border-l-white/20 md:border-y-0 md:border-r-0 md:bg-gradient-to-br md:from-white/10 md:to-transparent shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] rounded-t-[2.5rem] md:rounded-none ring-1 ring-white/5 overflow-hidden">
+            <div className="relative w-full h-[50vh] md:w-[460px] md:h-full z-30 flex flex-col bg-purple-950/10 border-l border-white/10 md:border-t-0 border-t border-white/10 [backdrop-filter:blur(40px)] shadow-[0_0_80px_rgba(60,10,120,0.2)] rounded-t-[2.5rem] md:rounded-none overflow-hidden">
 
                 <div className="md:hidden absolute -top-10 inset-x-0 h-10 bg-gradient-to-t from-background to-transparent pointer-events-none" />
 
-                <div className="px-6 py-4 flex items-center justify-between border-b border-primary/10 bg-primary/5 shrink-0 md:mt-24">
+                <div className="px-6 py-4 flex items-center justify-between border-b border-white/5 bg-transparent shrink-0 md:mt-24 relative z-40">
                     <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-full border border-primary/30 bg-primary/10 flex items-center justify-center text-lg">🌸</div>
                         <div>
@@ -338,53 +338,53 @@ export default function ChatClient() {
                     </div>
                 </div>
 
-                <div className="flex-1 overflow-hidden bg-transparent">
+                <div className="flex-1 overflow-hidden bg-transparent relative z-30">
                     <ScrollArea className="h-full">
                         <div ref={scrollRef} className="flex flex-col gap-4 px-5 py-5 pb-2">
                             {messages.map((msg, i) => (
                                 msg.role === "miyona" ? (
-                                    <div key={i} className="self-start max-w-[85%] rounded-[1.4rem] rounded-tl-sm bg-secondary text-secondary-foreground px-5 py-3 text-[14px] font-medium border border-primary/10 shadow-sm leading-relaxed">
+                                    <div key={i} className="self-start max-w-[85%] rounded-[1.4rem] rounded-tl-sm bg-black/40 backdrop-blur-md text-purple-100 px-5 py-3 text-[14px] font-medium border border-purple-500/20 shadow-[0_0_15px_rgba(140,50,250,0.1)] leading-relaxed">
                                         {msg.text}
                                     </div>
                                 ) : (
-                                    <div key={i} className="self-end max-w-[85%] rounded-[1.4rem] rounded-tr-sm bg-primary text-primary-foreground px-5 py-3 text-[14px] font-medium shadow-sm leading-relaxed">
+                                    <div key={i} className="self-end max-w-[85%] rounded-[1.4rem] rounded-tr-sm bg-purple-600/80 backdrop-blur-md text-white px-5 py-3 text-[14px] font-medium border border-purple-400/30 shadow-[0_0_15px_rgba(140,50,250,0.2)] leading-relaxed">
                                         {msg.text}
                                     </div>
                                 )
                             ))}
                             {isThinking && (
-                                <div className="self-start flex items-center gap-1.5 px-5 py-3 rounded-[1.4rem] rounded-tl-sm bg-secondary border border-primary/10">
-                                    <span className="w-2 h-2 rounded-full bg-primary/60 animate-bounce [animation-delay:0ms]" />
-                                    <span className="w-2 h-2 rounded-full bg-primary/60 animate-bounce [animation-delay:150ms]" />
-                                    <span className="w-2 h-2 rounded-full bg-primary/60 animate-bounce [animation-delay:300ms]" />
+                                <div className="self-start flex items-center gap-1.5 px-5 py-3 rounded-[1.4rem] rounded-tl-sm bg-black/40 backdrop-blur-md border border-purple-500/20 shadow-[0_0_15px_rgba(140,50,250,0.1)]">
+                                    <span className="w-2 h-2 rounded-full bg-purple-400/60 animate-bounce [animation-delay:0ms]" />
+                                    <span className="w-2 h-2 rounded-full bg-purple-400/60 animate-bounce [animation-delay:150ms]" />
+                                    <span className="w-2 h-2 rounded-full bg-purple-400/60 animate-bounce [animation-delay:300ms]" />
                                 </div>
                             )}
                         </div>
                     </ScrollArea>
                 </div>
 
-                <div className="px-4 py-3 pb-8 md:pb-6 border-t border-primary/10 bg-transparent border-t border-white/10 shrink-0">
-                    <div className="flex items-center gap-2 px-3 py-2 rounded-2xl bg-secondary/50 dark:bg-zinc-900 border border-primary/20 focus-within:border-primary/40 transition-colors">
+                <div className="px-4 py-3 pb-8 md:pb-6 border-t border-white/5 bg-transparent relative z-40 shrink-0">
+                    <div className="flex items-center gap-2 px-3 py-2 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 hover:border-purple-500/40 focus-within:border-purple-500/60 focus-within:bg-black/60 shadow-[0_0_20px_rgba(100,20,180,0.15)] transition-all duration-300">
                         <Button 
                             variant="ghost" 
                             size="icon" 
                             onClick={() => router.push('/call')}
-                            className="h-9 w-9 shrink-0 rounded-full text-primary hover:bg-primary/10"
+                            className="h-9 w-9 shrink-0 rounded-full text-purple-400 hover:text-purple-300 hover:bg-purple-500/20"
                         >
-                            <Phone className="h-4 w-4 fill-primary stroke-none" />
+                            <Phone className="h-4 w-4 fill-current stroke-none" />
                         </Button>
                         <Input
                             placeholder="Message Miyona..."
-                            className="flex-1 h-9 border-none bg-transparent focus-visible:ring-0 placeholder:text-muted-foreground/40 text-[14px] font-medium px-1"
+                            className="flex-1 h-9 border-none bg-transparent focus-visible:ring-0 placeholder:text-purple-300/40 text-purple-50 text-[14px] font-medium px-1"
                             value={input}
                             onChange={e => setInput(e.target.value)}
                             onKeyDown={handleKeyDown}
                             disabled={isThinking}
                         />
-                        <Button size="icon" variant="ghost" className="h-9 w-9 rounded-full text-muted-foreground hover:text-primary hover:bg-primary/10 shrink-0">
+                        <Button size="icon" variant="ghost" className="h-9 w-9 rounded-full text-purple-400 hover:text-purple-300 hover:bg-purple-500/20 shrink-0 transition-colors">
                             <Smile className="h-4 w-4" />
                         </Button>
-                        <Button size="icon" onClick={handleSend} disabled={!input.trim() || isThinking} className="h-9 w-9 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 shrink-0 disabled:opacity-40">
+                        <Button size="icon" onClick={handleSend} disabled={!input.trim() || isThinking} className="h-9 w-9 rounded-full bg-purple-600 text-white hover:bg-purple-500 hover:shadow-[0_0_15px_rgba(160,30,250,0.6)] shrink-0 disabled:opacity-40 transition-all duration-300">
                             <Send className="h-4 w-4" />
                         </Button>
                     </div>
