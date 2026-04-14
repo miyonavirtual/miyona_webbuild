@@ -8,8 +8,8 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: "No text provided" }, { status: 400 });
         }
 
-        // Voice ID for "Bella" from ElevenLabs (good neutral voice, swap if needed)
-        const voiceId = "EXAVITQu4vr4xnSDxMaL"; 
+        // Voice ID for the user's preferred ElevenLabs voice
+        const voiceId = "ALCIIw5qAlLDox8iBl0U"; 
         const ELEVENLABS_API_KEY = process.env.ELEVENLABS_API_KEY || "sk_fc0a66814449a77f416a8cf1652d8c5a56411c9513d4daec";
 
         const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}?output_format=mp3_44100_128`, {
