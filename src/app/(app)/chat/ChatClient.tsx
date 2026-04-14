@@ -309,19 +309,19 @@ export default function ChatClient() {
     };
 
     return (
-        <div className="relative h-screen w-full overflow-hidden bg-background text-foreground font-sans flex flex-col md:flex-row">
+        <div className="relative h-screen w-full overflow-hidden bg-cosmic-animation text-foreground font-sans flex flex-col md:flex-row">
             
             {/* Navbar overlay */}
             <div className="z-50 absolute top-0 w-full"><NavBar /></div>
 
             {/* LEFT / TOP SIDE: VRM Model */}
-            <div className="relative w-full h-[50vh] md:h-full md:flex-1 bg-black flex flex-col">
+            <div className="relative w-full h-[50vh] md:h-full md:flex-1 bg-transparent flex flex-col">
                 <canvas ref={canvasRef} className="w-full h-full object-cover" />
                 <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none z-10" />
             </div>
 
             {/* RIGHT / BOTTOM SIDE: Chat panel (Responsive) */}
-            <div className="relative w-full h-[50vh] md:w-[460px] md:h-full z-30 flex flex-col md:shadow-[-20px_0_60px_-15px_rgba(0,0,0,0.5)] md:bg-background/95 md:dark:bg-zinc-950/95 md:backdrop-blur-3xl md:border-l md:border-primary/15 overflow-hidden">
+            <div className="relative w-full h-[50vh] md:w-[460px] md:h-full z-30 flex flex-col md:shadow-[-20px_0_60px_-15px_rgba(0,0,0,0.5)] bg-black/20 backdrop-blur-md md:bg-white/5 md:dark:bg-black/20 md:border-l md:border-primary/15 overflow-hidden">
 
                 <div className="md:hidden absolute -top-10 inset-x-0 h-10 bg-gradient-to-t from-background to-transparent pointer-events-none" />
 
@@ -338,7 +338,7 @@ export default function ChatClient() {
                     </div>
                 </div>
 
-                <div className="flex-1 overflow-hidden bg-background md:bg-transparent">
+                <div className="flex-1 overflow-hidden bg-transparent">
                     <ScrollArea className="h-full">
                         <div ref={scrollRef} className="flex flex-col gap-4 px-5 py-5 pb-2">
                             {messages.map((msg, i) => (
@@ -363,7 +363,7 @@ export default function ChatClient() {
                     </ScrollArea>
                 </div>
 
-                <div className="px-4 py-3 pb-8 md:pb-6 border-t border-primary/10 bg-background/60 shrink-0">
+                <div className="px-4 py-3 pb-8 md:pb-6 border-t border-primary/10 bg-transparent border-t border-white/10 shrink-0">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-2xl bg-secondary/50 dark:bg-zinc-900 border border-primary/20 focus-within:border-primary/40 transition-colors">
                         <Button 
                             variant="ghost" 

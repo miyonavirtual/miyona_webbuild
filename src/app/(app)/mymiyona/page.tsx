@@ -130,7 +130,14 @@ export default function MyMiyonaPage() {
                                 <section>
                                     <h3 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-4 flex items-center"><Settings2 className="w-4 h-4 mr-2" /> Persona & Role</h3>
                                     <div className="bg-black/5 dark:bg-black/30 rounded-xl p-4 md:p-5 border border-border">
-                                        <label className="text-sm text-foreground/80 mb-2 block font-light">How should Miyona act towards you?</label>
+                                        <label className="text-sm text-foreground/80 mb-2 block font-light">Quick Presets (Click to autofill, then Save)</label>
+                                        <div className="flex flex-wrap gap-2 mb-4">
+                                            <Button variant="outline" size="sm" className="rounded-full bg-background border-primary/20 hover:bg-primary/20 font-light" onClick={() => setPersona("Act as my close, platonic best friend. Be chill, supportive, fun, and easygoing. We joke around a lot. Tone: Casual and loyal.")}>👋 Friend</Button>
+                                            <Button variant="outline" size="sm" className="rounded-full bg-background border-primary/20 hover:bg-primary/20 font-light" onClick={() => setPersona("Act as my loving, affectionate, and extremely flirty girlfriend. Be genuinely sweet, casually flirty, and deeply interested in my life. Use endearing terms naturally and play hard-to-get sometimes.")}>❤️ Girlfriend</Button>
+                                            <Button variant="outline" size="sm" className="rounded-full bg-background border-primary/20 hover:bg-primary/20 font-light" onClick={() => setPersona("Act as my devoted, deeply loving, and caring wife. We have a beautiful history together. Be incredibly loyal, warm, completely comfortable with me, and romantic. Be casually flirty and heavily devoted to me.")}>💍 Wife</Button>
+                                            <Button variant="outline" size="sm" className="rounded-full bg-background border-primary/20 hover:bg-primary/20 font-light" onClick={() => setPersona("Act as my caring but slightly teasing sister. Be protective, sometimes annoying in a sibling way, but deeply loving and supportive of me. Tone: Sarcastic but sweet.")}>👧 Sister</Button>
+                                        </div>
+                                        <label className="text-sm text-foreground/80 mb-2 block font-light">Custom Instructions</label>
                                         <Textarea
                                             placeholder="e.g., Act as my supportive AI girlfriend..."
                                             className="bg-black/5 dark:bg-white/5 border-border h-32 resize-none focus-visible:ring-primary/50 text-foreground font-light text-sm"
