@@ -84,7 +84,7 @@ export function Hero() {
               className="mt-14 flex flex-col items-center justify-center gap-8 sm:flex-row"
           >
             <Button size="lg" className="group relative h-16 min-w-[240px] overflow-hidden rounded-full bg-primary px-10 text-xl font-bold transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(var(--primary),0.3)]" asChild>
-              <Link href="/signup">
+              <Link href="/login">
                 <span className="relative z-10 flex items-center gap-2">
                   Meet Her Now
                 </span>

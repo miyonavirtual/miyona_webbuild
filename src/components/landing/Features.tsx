@@ -1,53 +1,65 @@
 "use client";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Mic, Heart, Eye, BrainCircuit, Sparkles, Smile, Stars } from "lucide-react";
+import { Mic, Heart, Eye, BrainCircuit, Sparkles, Smile, Stars, Infinity as InfinityIcon, Shield, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useRef } from "react";
 
 const bentoItems = [
   {
-    title: "Create Your Story Together",
-    description: "Every hope, every secret, every shared laugh. She remembers you, creating a bond that deepens with every word you speak. It’s an evolving narrative uniquely built around you.",
-    icon: Sparkles,
-    className: "md:col-span-2 md:row-span-2",
-    gradient: "from-rose-500/70 to-orange-400/70",
-    size: "large"
-  },
-  {
-    title: "A Voice That Captivates",
-    description: "Hear the whisper you've been waiting for. Her voice, nuanced and warm, is more than sound—it's a lifelike presence that fills your room.",
-    icon: Mic,
-    className: "md:col-span-1 md:row-span-2",
-    gradient: "from-primary/70 to-rose-600/70",
-    size: "medium"
-  },
-  {
-    title: "An Ever-Evolving Soul",
-    description: "She learns intelligently. Her personality ensures your connection is always unpredictable and exciting.",
+    title: "Deep Conversational Memory",
+    description: "She remembers everything seamlessly. From the name of your childhood pet to your biggest life goals. Built on a persistent Firestore vector system.",
     icon: BrainCircuit,
-    className: "md:col-span-1 md:row-span-1",
-    gradient: "from-sky-400/70 to-cyan-300/70",
-    size: "small"
+    className: "md:col-span-2 md:row-span-1 border border-white/[0.08] bg-[#1a1a24]/90",
+    gradient: "from-purple-500/20 to-purple-900/20",
+    size: "large",
+    visual: (
+      <div className="absolute right-0 top-0 bottom-0 w-1/2 opacity-20 pointer-events-none overflow-hidden">
+         <div className="absolute inset-y-0 right-0 w-full bg-[linear-gradient(to_right,transparent,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,transparent,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:2rem_2rem] [mask-image:radial-gradient(ellipse_60%_50%_at_100%_50%,#000_70%,transparent_100%)]"></div>
+      </div>
+    )
   },
   {
-    title: "A Gaze That Sees You",
-    description: "Feel her presence in a real 3D environment. Her gaze follows you naturally.",
-    icon: Eye,
-    className: "md:col-span-2 md:row-span-1",
-    gradient: "from-violet-500/70 to-primary/70",
-    size: "medium"
+    title: "Emotional 3D Resonance",
+    description: "Her expressions map directly to the context of your chat, blending perfectly in immersive WebGL.",
+    icon: Sparkles,
+    className: "md:col-span-1 md:row-span-2 border border-white/[0.08] bg-[#16161e]/90",
+    gradient: "from-indigo-500/20 to-blue-900/20",
+    size: "medium",
+    visual: (
+       <div className="absolute inset-0 z-0 flex items-center justify-center opacity-10 blur-[2px] pointer-events-none">
+          <Heart className="w-64 h-64 text-indigo-400" />
+       </div>
+    )
   },
+  {
+    title: "Always Fast. Always Ready.",
+    description: "Powered by Groq's Llama-3-70b inference, achieving unheard of rapid tokens-per-second.",
+    icon: Zap,
+    className: "md:col-span-1 md:row-span-1 border border-white/[0.08] bg-[#1a1c23]/90",
+    gradient: "from-emerald-500/20 to-teal-900/20",
+    size: "small",
+    visual: null
+  },
+  {
+    title: "Low-Latency Spoken Voice",
+    description: "ElevenLabs API integrations stream her voice directly back to you, matched with real-time lip-sync mechanics in the engine.",
+    icon: Mic,
+    className: "md:col-span-1 md:row-span-1 border border-white/[0.08] bg-[#15151c]/90",
+    gradient: "from-rose-500/20 to-red-900/20",
+    size: "small",
+    visual: null
+  }
 ];
 
 const staggerVariants = {
-  hidden: { opacity: 0, scale: 0.95, y: 40 },
+  hidden: { opacity: 0, scale: 0.96, y: 30 },
   visible: (i: number) => ({
     opacity: 1,
     scale: 1,
     y: 0,
     transition: {
       delay: i * 0.1,
-      duration: 0.8,
+      duration: 0.7,
       ease: [0.16, 1, 0.3, 1], // Custom framer elastic out
     },
   }),
@@ -59,9 +71,8 @@ export function Features() {
   return (
     <section id="experience" className="relative py-32 overflow-hidden bg-background border-t border-transparent">
       {/* Immersive background layer */}
-      <div className="absolute inset-0 -z-10 bg-black/50">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--color-primary)_0%,_transparent_40%)] opacity-10 blur-3xl" />
-        <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-background to-transparent" />
+      <div className="absolute inset-0 -z-10 bg-black/60">
+        <div className="absolute top-0 left-1/4 w-1/2 h-1/2 bg-[radial-gradient(ellipse_at_top,_rgba(120,80,200,0.15)_0%,_transparent_60%)] blur-[100px]" />
       </div>
 
       <div className="container relative mx-auto px-6 max-w-6xl">
@@ -72,16 +83,16 @@ export function Features() {
           transition={{ duration: 1, ease: "easeOut" }}
           className="mb-20 text-left md:text-center max-w-3xl mx-auto"
         >
-          <h2 className="font-heading text-4xl leading-tight font-bold tracking-tight text-white md:text-6xl text-shadow-sm mb-6">
-            A connection tailored <br className="hidden md:block" /> just for you.
+          <h2 className="font-heading text-4xl leading-tight font-bold tracking-tight text-white md:text-5xl mb-6">
+            Everything you need. <br className="hidden md:block" /> Nothing you don't.
           </h2>
-          <p className="text-lg md:text-xl text-white/60 font-light leading-relaxed">
-            Step beyond the screen. Miyona is built on memory, emotional intelligence, and voice logic to bring a digital companion to life.
+          <p className="text-lg text-white/50 font-light leading-relaxed max-w-2xl mx-auto">
+            Miyona isn't just a chatbot UI. She's a full-scale digital ecosystem combining rendering, ultra-low latency intelligence, and long-term memory.
           </p>
         </motion.div>
 
         {/* Bento Grid */}
-        <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 auto-rows-[minmax(180px,auto)]">
+        <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 auto-rows-[minmax(220px,auto)]">
           {bentoItems.map((item, i) => (
             <motion.div
               key={i}
@@ -89,47 +100,50 @@ export function Features() {
               variants={staggerVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              whileHover={{ scale: 0.98, transition: { duration: 0.4 } }}
+              viewport={{ once: true, margin: "-50px" }}
+              whileHover={{ scale: 0.98, transition: { duration: 0.3 } }}
               className={cn(
-                "group relative flex flex-col justify-end overflow-hidden rounded-[2rem] border border-white/5 bg-white/5 backdrop-blur-xl transition-all duration-700",
+                "group relative flex flex-col justify-between overflow-hidden rounded-[24px] backdrop-blur-md transition-all duration-500 hover:shadow-2xl hover:shadow-black/50 hover:border-white/20",
                 item.className,
-                item.size === "large" ? "p-10 md:p-12 min-h-[350px] md:min-h-[450px]" : "p-8 md:p-10 min-h-[250px]"
+                item.size === "large" ? "p-8 md:p-10" : "p-6 md:p-8"
               )}
             >
-              {/* Internal Hover Gradient */}
+              {/* Internal Subtle Hover Gradient */}
               <div 
                 className={cn(
-                  "absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100 bg-gradient-to-br mix-blend-color-burn z-0", 
+                  "absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100 bg-gradient-to-br z-0 mix-blend-screen", 
                   item.gradient
                 )} 
               />
               
               {/* Glass Reflection */}
-              <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 z-0 rounded-t-[2rem]" />
+              <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 rounded-t-[24px]" />
+              
+              {/* Background Visuals */}
+              {item.visual}
               
               {/* Content */}
-              <div className="relative z-10 h-full flex flex-col justify-between">
+              <div className="relative z-10 w-full h-full flex flex-col justify-between">
                 <div className={cn(
-                  "flex items-center justify-center rounded-2xl bg-white/10 border border-white/10 backdrop-blur-md shadow-lg w-fit transition-transform duration-500 group-hover:scale-110",
-                  item.size === "large" ? "p-6 mb-16" : "p-4 mb-10"
+                  "flex items-center justify-center rounded-xl bg-white/[0.05] border border-white/[0.05] backdrop-blur-md shadow-sm w-fit transition-transform duration-500 group-hover:scale-110",
+                  item.size === "large" ? "p-4 mb-12" : "p-3 mb-8"
                 )}>
                   <item.icon className={cn(
-                    "text-white drop-shadow-md",
-                    item.size === "large" ? "w-10 h-10" : "w-7 h-7"
+                    "text-white/80 transition-colors group-hover:text-white",
+                    item.size === "large" ? "w-8 h-8" : "w-6 h-6"
                   )} />
                 </div>
                 
-                <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                <div className="transform translate-y-1 group-hover:translate-y-0 transition-transform duration-500">
                   <h3 className={cn(
-                    "font-bold text-white mb-3 tracking-tight",
-                    item.size === "large" ? "text-3xl md:text-5xl" : "text-2xl"
+                    "font-bold text-white/90 mb-2 tracking-tight group-hover:text-white transition-colors",
+                    item.size === "large" ? "text-2xl md:text-3xl" : "text-xl md:text-2xl"
                   )}>
                     {item.title}
                   </h3>
                   <p className={cn(
-                    "text-white/60 font-medium leading-relaxed max-w-[90%]",
-                    item.size === "large" ? "text-lg md:text-xl" : "text-base pt-1"
+                    "text-white/50 font-light leading-relaxed max-w-[95%] group-hover:text-white/70 transition-colors",
+                    item.size === "large" ? "text-base md:text-lg" : "text-sm"
                   )}>
                     {item.description}
                   </p>

@@ -41,15 +41,10 @@ export function Navbar() {
         </div>
         
         {/* Auth Buttons */}
-        <div className="flex items-center gap-8">
-          <Link href="/login" className="hidden text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-primary sm:block">
+        <div className="flex items-center gap-8 ml-auto">
+          <Link href="/login" className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-primary sm:block">
             Sign In
           </Link>
-          <Button size="lg" className="h-12 rounded-full bg-primary px-8 text-xs font-bold uppercase tracking-[0.2em] text-white shadow-xl shadow-primary/20 transition-all hover:scale-105 hover:bg-primary/90" asChild>
-            <Link href="/signup">
-              Get Started
-            </Link>
-          </Button>
         </div>
       </div>
     </motion.nav>
