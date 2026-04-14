@@ -321,7 +321,7 @@ export default function ChatClient() {
             </div>
 
             {/* RIGHT / BOTTOM SIDE: Chat panel (Responsive) */}
-            <div className="relative w-full h-[50vh] md:w-[460px] md:h-full z-30 flex flex-col md:shadow-[-20px_0_60px_-15px_rgba(0,0,0,0.5)] bg-black/20 backdrop-blur-md md:bg-white/5 md:dark:bg-black/20 md:border-l md:border-primary/15 overflow-hidden">
+            <div className="relative w-full h-[50vh] md:w-[460px] md:h-full z-30 flex flex-col md:shadow-[-20px_0_60px_-15px_rgba(0,0,0,0.5)] bg-black/40 backdrop-blur-3xl border border-white/10 md:border-l-white/20 md:border-y-0 md:border-r-0 md:bg-gradient-to-br md:from-white/10 md:to-transparent shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] rounded-t-[2.5rem] md:rounded-none ring-1 ring-white/5 overflow-hidden">
 
                 <div className="md:hidden absolute -top-10 inset-x-0 h-10 bg-gradient-to-t from-background to-transparent pointer-events-none" />
 
