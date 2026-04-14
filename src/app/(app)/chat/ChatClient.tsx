@@ -309,51 +309,34 @@ export default function ChatClient() {
     };
 
     return (
-        <div className="relative h-screen w-full overflow-hidden bg-cosmic-animation text-foreground font-sans flex flex-col md:flex-row">
+        <div className="relative h-screen w-full overflow-hidden bg-cosmic-animation text-foreground font-sans">
             
             {/* Navbar overlay */}
-            <div className="z-50 absolute top-0 w-full"><NavBar /></div>
+            <div className="z-[60] absolute top-0 w-full"><NavBar /></div>
 
-            {/* LEFT / TOP SIDE: VRM Model */}
-            <div className="relative w-full h-[50vh] md:h-full md:flex-1 bg-transparent flex flex-col">
+            {/* FULL SCREEN VRM Model */}
+            <div className="absolute inset-0 w-full h-full bg-transparent flex flex-col pointer-events-none z-10">
                 <canvas ref={canvasRef} className="w-full h-full object-cover" />
-                <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none z-10" />
             </div>
 
-            {/* RIGHT / BOTTOM SIDE: Chat panel (Responsive) */}
-            <div className="relative w-full h-[50vh] md:w-[460px] md:h-full z-30 flex flex-col bg-purple-950/10 border-l border-white/10 md:border-t-0 border-t border-white/10 [backdrop-filter:blur(40px)] shadow-[0_0_80px_rgba(60,10,120,0.2)] rounded-t-[2.5rem] md:rounded-none overflow-hidden">
-
-                <div className="md:hidden absolute -top-10 inset-x-0 h-10 bg-gradient-to-t from-background to-transparent pointer-events-none" />
-
-                <div className="px-6 py-4 flex items-center justify-between border-b border-white/5 bg-transparent shrink-0 md:mt-24 relative z-40">
-                    <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full border border-primary/30 bg-primary/10 flex items-center justify-center text-lg">🌸</div>
-                        <div>
-                            <p className="font-bold text-[15px] text-foreground tracking-tight">Miyona</p>
-                            <div className="flex items-center gap-1.5 mt-0.5">
-                                <span className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_6px_rgba(74,222,128,0.8)] animate-pulse" />
-                                <span className="text-[12px] text-muted-foreground/70 font-medium">Online</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="flex-1 overflow-hidden bg-transparent relative z-30">
-                    <ScrollArea className="h-full">
-                        <div ref={scrollRef} className="flex flex-col gap-4 px-5 py-5 pb-2">
+            {/* FLOATING CHAT MESSAGES (Right Side) */}
+            <div className="absolute right-0 md:right-8 top-0 bottom-28 w-full md:w-[460px] z-30 flex flex-col pointer-events-none">
+                <div className="flex-1 overflow-hidden relative z-30 md:mt-24 mt-20">
+                    <ScrollArea className="h-full pointer-events-auto">
+                        <div ref={scrollRef} className="flex flex-col justify-end min-h-full gap-4 px-6 py-5">
                             {messages.map((msg, i) => (
                                 msg.role === "miyona" ? (
-                                    <div key={i} className="self-start max-w-[85%] rounded-[1.4rem] rounded-tl-sm bg-black/40 backdrop-blur-md text-purple-100 px-5 py-3 text-[14px] font-medium border border-purple-500/20 shadow-[0_0_15px_rgba(140,50,250,0.1)] leading-relaxed">
+                                    <div key={i} className="self-start max-w-[85%] rounded-[1.4rem] rounded-tl-sm bg-black/40 backdrop-blur-md text-purple-100 px-5 py-3 text-[14px] font-medium border border-purple-500/20 shadow-[0_0_15px_rgba(140,50,250,0.1)] leading-relaxed animate-in slide-in-from-left fade-in duration-300">
                                         {msg.text}
                                     </div>
                                 ) : (
-                                    <div key={i} className="self-end max-w-[85%] rounded-[1.4rem] rounded-tr-sm bg-purple-600/80 backdrop-blur-md text-white px-5 py-3 text-[14px] font-medium border border-purple-400/30 shadow-[0_0_15px_rgba(140,50,250,0.2)] leading-relaxed">
+                                    <div key={i} className="self-end max-w-[85%] rounded-[1.4rem] rounded-tr-sm bg-purple-600/80 backdrop-blur-md text-white px-5 py-3 text-[14px] font-medium border border-purple-400/30 shadow-[0_0_15px_rgba(140,50,250,0.2)] leading-relaxed animate-in slide-in-from-right fade-in duration-300">
                                         {msg.text}
                                     </div>
                                 )
                             ))}
                             {isThinking && (
-                                <div className="self-start flex items-center gap-1.5 px-5 py-3 rounded-[1.4rem] rounded-tl-sm bg-black/40 backdrop-blur-md border border-purple-500/20 shadow-[0_0_15px_rgba(140,50,250,0.1)]">
+                                <div className="self-start flex items-center gap-1.5 px-5 py-3 rounded-[1.4rem] rounded-tl-sm bg-black/40 backdrop-blur-md border border-purple-500/20 shadow-[0_0_15px_rgba(140,50,250,0.1)] animate-in slide-in-from-left fade-in duration-300">
                                     <span className="w-2 h-2 rounded-full bg-purple-400/60 animate-bounce [animation-delay:0ms]" />
                                     <span className="w-2 h-2 rounded-full bg-purple-400/60 animate-bounce [animation-delay:150ms]" />
                                     <span className="w-2 h-2 rounded-full bg-purple-400/60 animate-bounce [animation-delay:300ms]" />
@@ -362,32 +345,40 @@ export default function ChatClient() {
                         </div>
                     </ScrollArea>
                 </div>
+            </div>
 
-                <div className="px-4 py-3 pb-8 md:pb-6 border-t border-white/5 bg-transparent relative z-40 shrink-0">
-                    <div className="flex items-center gap-2 px-3 py-2 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 hover:border-purple-500/40 focus-within:border-purple-500/60 focus-within:bg-black/60 shadow-[0_0_20px_rgba(100,20,180,0.15)] transition-all duration-300">
-                        <Button 
-                            variant="ghost" 
-                            size="icon" 
-                            onClick={() => router.push('/call')}
-                            className="h-9 w-9 shrink-0 rounded-full text-purple-400 hover:text-purple-300 hover:bg-purple-500/20"
-                        >
-                            <Phone className="h-4 w-4 fill-current stroke-none" />
-                        </Button>
-                        <Input
-                            placeholder="Message Miyona..."
-                            className="flex-1 h-9 border-none bg-transparent focus-visible:ring-0 placeholder:text-purple-300/40 text-purple-50 text-[14px] font-medium px-1"
-                            value={input}
-                            onChange={e => setInput(e.target.value)}
-                            onKeyDown={handleKeyDown}
-                            disabled={isThinking}
-                        />
-                        <Button size="icon" variant="ghost" className="h-9 w-9 rounded-full text-purple-400 hover:text-purple-300 hover:bg-purple-500/20 shrink-0 transition-colors">
-                            <Smile className="h-4 w-4" />
-                        </Button>
-                        <Button size="icon" onClick={handleSend} disabled={!input.trim() || isThinking} className="h-9 w-9 rounded-full bg-purple-600 text-white hover:bg-purple-500 hover:shadow-[0_0_15px_rgba(160,30,250,0.6)] shrink-0 disabled:opacity-40 transition-all duration-300">
-                            <Send className="h-4 w-4" />
-                        </Button>
-                    </div>
+            {/* FLOATING TEXT INPUT (Bottom Center) matching CallClient design */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 w-[92%] md:w-[600px] pointer-events-auto animate-in slide-in-from-bottom fade-in duration-500 delay-300 fill-mode-both">
+                <div className="flex items-center justify-between gap-3 px-6 py-4 rounded-[2.5rem] bg-black/40 backdrop-blur-2xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.8)] focus-within:shadow-[0_20px_60px_rgba(140,50,250,0.2)] focus-within:border-purple-500/40 transition-all duration-300">
+                    <button 
+                        onClick={() => router.push('/call')}
+                        className="group relative flex items-center justify-center h-12 w-12 shrink-0 rounded-full bg-white/5 hover:bg-white/10 border border-white/5 transition-all text-purple-400 hover:text-purple-300 hover:scale-105 active:scale-95"
+                    >
+                        <Phone className="h-5 w-5 fill-current stroke-none group-hover:scale-110 transition-transform" />
+                    </button>
+                    
+                    <Input
+                        placeholder="Message Miyona..."
+                        className="flex-1 h-full border-none bg-transparent focus-visible:ring-0 placeholder:text-white/30 text-white text-[16px] font-medium px-2"
+                        value={input}
+                        onChange={e => setInput(e.target.value)}
+                        onKeyDown={handleKeyDown}
+                        disabled={isThinking}
+                    />
+                    
+                    <button 
+                        className="flex items-center justify-center h-12 w-12 shrink-0 rounded-full text-white/50 hover:text-white hover:bg-white/10 transition-all hover:scale-105 active:scale-95"
+                    >
+                        <Smile className="h-5 w-5" />
+                    </button>
+                    
+                    <button 
+                        onClick={handleSend} 
+                        disabled={!input.trim() || isThinking} 
+                        className="flex items-center justify-center h-12 w-12 shrink-0 rounded-full bg-purple-600 text-white hover:bg-purple-500 transition-all hover:scale-105 active:scale-95 disabled:opacity-40 disabled:hover:scale-100 shadow-[0_0_15px_rgba(160,30,250,0.6)]"
+                    >
+                        <Send className="h-5 w-5 ml-1" />
+                    </button>
                 </div>
             </div>
         </div>
