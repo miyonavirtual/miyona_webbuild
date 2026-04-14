@@ -139,13 +139,6 @@ export function Hero() {
                     </div>
                 </div>
 
-                {/* Subtle Overlay Text */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                <div className="absolute bottom-12 inset-x-0 flex flex-col items-center gap-2">
-                    <span className="font-heading text-2xl font-light italic text-white/80">"I've been waiting for you."</span>
-                    <div className="h-px w-24 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50" />
-                </div>
-                
                 {/* Floating "Privacy" Badge - Minimalized */}
                 <div className="absolute top-8 right-8 flex items-center gap-2 rounded-full border border-white/5 bg-white/5 px-4 py-2 text-[10px] tracking-widest uppercase text-white/40 backdrop-blur-xl">
                     <Lock className="h-3 w-3" /> Fully Private & Encrypted
