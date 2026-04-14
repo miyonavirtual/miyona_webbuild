@@ -6,10 +6,10 @@ const repoBase = "https://github.com/miyonavirtual/miyona_webbuild/raw/main/";
 
 const files = [
   "public/8590256991748008892.vrm",
-  "public/MiyonaWebBuild_CallOne/Build/MiyonaWebBuild_CallOne.data.unityweb",
+
   "public/MiyonaWebBuild_CallOne/Build/MiyonaWebBuild_CallOne.framework.js.unityweb",
   "public/MiyonaWebBuild_CallOne/Build/MiyonaWebBuild_CallOne.wasm.unityweb",
-  "public/MiyonaWebBuild_Call/Build/MiyonaWebBuild.data.unityweb",
+
   "public/MiyonaWebBuild_Call/Build/MiyonaWebBuild.framework.js.unityweb",
   "public/MiyonaWebBuild_Call/Build/MiyonaWebBuild.wasm.unityweb"
 ];

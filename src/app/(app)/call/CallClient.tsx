@@ -32,7 +32,7 @@ export default function CallClient() {
 
     const { unityProvider, isLoaded, loadingProgression, sendMessage } = useUnityContext({
         loaderUrl: "/MiyonaWebBuild_CallOne/Build/MiyonaWebBuild_CallOne.loader.js",
-        dataUrl: "/MiyonaWebBuild_CallOne/Build/MiyonaWebBuild_CallOne.data.unityweb",
+        dataUrl: process.env.NODE_ENV === "production" ? "https://media.githubusercontent.com/media/miyonavirtual/miyona_webbuild/main/public/MiyonaWebBuild_CallOne/Build/MiyonaWebBuild_CallOne.data.unityweb" : "/MiyonaWebBuild_CallOne/Build/MiyonaWebBuild_CallOne.data.unityweb",
         frameworkUrl: "/MiyonaWebBuild_CallOne/Build/MiyonaWebBuild_CallOne.framework.js.unityweb",
         codeUrl: "/MiyonaWebBuild_CallOne/Build/MiyonaWebBuild_CallOne.wasm.unityweb",
     });
