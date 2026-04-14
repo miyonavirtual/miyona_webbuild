@@ -1,49 +1,57 @@
-"use strict";
+"use client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Sparkles, Heart } from "lucide-react";
+import { Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 export function Navbar() {
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-white/50 bg-white/60 backdrop-blur-xl supports-[backdrop-filter]:bg-white/40">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+    <motion.nav 
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed top-0 z-50 w-full border-b border-white/5 bg-background/60 backdrop-blur-xl"
+    >
+      <div className="container mx-auto flex h-24 items-center justify-between px-6">
         {/* Logo Area */}
-        <Link href="/" className="group flex items-center gap-2 font-heading text-xl font-bold tracking-tight text-primary hover:opacity-80 transition-opacity">
-          <div className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-pink-400 to-rose-400 text-white shadow-lg shadow-pink-200 transition-transform group-hover:scale-105">
-            <Sparkles className="h-5 w-5 absolute" />
+        <Link href="/" className="group flex items-center gap-3 transition-opacity hover:opacity-90">
+          <div className="relative flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 shadow-[0_0_15px_rgba(var(--primary),0.2)]">
+            <Heart className="h-4 w-4 text-primary animate-pulse" />
           </div>
-          <span className="bg-gradient-to-r from-pink-500 to-rose-500 bg-clip-text text-transparent">
-            Miyona.ai
+          <span className="font-heading text-2xl font-light tracking-[0.15em] text-foreground uppercase">
+            Miyona
           </span>
         </Link>
         
         {/* Desktop Nav */}
-        <div className="hidden gap-8 md:flex">
-          {["Features", "Pricing", "About"].map((item) => (
-             <Link 
-               key={item} 
-               href={`#${item.toLowerCase()}`} 
-               className="text-sm font-semibold text-muted-foreground transition-colors hover:text-primary relative group"
-             >
-               {item}
-               <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-primary/50 transition-all group-hover:w-full rounded-full" />
-             </Link>
-          ))}
+        <div className="hidden gap-12 lg:flex">
+          <Link 
+             href="/pricing" 
+             className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground transition-all hover:text-primary hover:tracking-[0.25em]"
+           >
+             Membership
+           </Link>
+           <Link 
+             href="/#experience" 
+             className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground transition-all hover:text-primary hover:tracking-[0.25em]"
+           >
+             Experience
+           </Link>
         </div>
         
         {/* Auth Buttons */}
-        <div className="flex items-center gap-3">
-          <Button variant="ghost" size="sm" className="hidden sm:inline-flex text-muted-foreground hover:text-primary hover:bg-pink-50" asChild>
-            <Link href="/login">Log in</Link>
-          </Button>
-          <Button size="sm" className="rounded-full bg-gradient-to-r from-pink-400 to-rose-400 px-6 font-bold text-white shadow-lg shadow-pink-200 hover:shadow-pink-300 hover:scale-105 transition-all" asChild>
+        <div className="flex items-center gap-8">
+          <Link href="/login" className="hidden text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-primary sm:block">
+            Sign In
+          </Link>
+          <Button size="lg" className="h-12 rounded-full bg-primary px-8 text-xs font-bold uppercase tracking-[0.2em] text-white shadow-xl shadow-primary/20 transition-all hover:scale-105 hover:bg-primary/90" asChild>
             <Link href="/signup">
-              Get Started <Heart className="ml-2 h-3 w-3 fill-white" />
+              Get Started
             </Link>
           </Button>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 }

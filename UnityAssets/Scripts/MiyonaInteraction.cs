@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class MiyonaInteraction : MonoBehaviour
 {
     private MiyonaEmotionController emotionController;
+    private Coroutine currentResetCoroutine;
 
     void Start()
     {
@@ -16,15 +17,9 @@ public class MiyonaInteraction : MonoBehaviour
 
     void Update()
     {
-        // Detect Click or Touch using New Input System if available
         if (Pointer.current != null && Pointer.current.press.wasPressedThisFrame)
         {
             HandleTouch(Pointer.current.position.ReadValue());
-        }
-        // Fallback to Legacy Input System just in case
-        else if (Input.GetMouseButtonDown(0))
-        {
-            HandleTouch(Input.mousePosition);
         }
     }
 
@@ -60,6 +55,7 @@ public class MiyonaInteraction : MonoBehaviour
         if (emotionController != null)
         {
             emotionController.SetEmotion("surprised"); // Matches the bashful expression
+            StartEmotionReset();
         }
     }
 
@@ -68,6 +64,29 @@ public class MiyonaInteraction : MonoBehaviour
         if (emotionController != null)
         {
             emotionController.SetEmotion("happy"); // Only changes the face to happy
+            StartEmotionReset();
+        }
+    }
+
+    void StartEmotionReset()
+    {
+        // Cancel any existing timer if we touch her again before it finishes
+        if (currentResetCoroutine != null)
+        {
+            StopCoroutine(currentResetCoroutine);
+        }
+        
+        // Start a new 2-second timer to return to neutral
+        currentResetCoroutine = StartCoroutine(ResetEmotionAfterDelay(2.0f));
+    }
+
+    private System.Collections.IEnumerator ResetEmotionAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        
+        if (emotionController != null)
+        {
+            emotionController.SetEmotion("neutral");
         }
     }
 }

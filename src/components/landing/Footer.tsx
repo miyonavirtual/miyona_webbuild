@@ -1,26 +1,47 @@
-"use strict";
+"use client";
 import Link from "next/link";
-import { Sparkles, Heart } from "lucide-react";
+import { Heart } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="border-t border-gray-100 bg-white/80 py-12 backdrop-blur-xl">
-      <div className="container mx-auto px-4 flex flex-col items-center justify-between gap-6 md:flex-row">
-        <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-pink-100 text-pink-500">
-                <Sparkles className="h-4 w-4" />
-            </div>
-            <span className="font-heading font-bold text-gray-900">Miyona.ai</span>
+    <footer className="border-t border-white/5 bg-background py-20">
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col items-center justify-between gap-12 md:flex-row md:items-start">
+          <div className="flex flex-col items-center gap-6 md:items-start">
+              <Link href="/" className="font-heading text-3xl font-light tracking-widest text-foreground uppercase">
+                  Miyona
+              </Link>
+              <p className="text-center text-sm font-light leading-relaxed text-muted-foreground/60 md:text-left max-w-xs">
+                  Where intimacy meets technology, and technology fades into the background.
+              </p>
+          </div>
+          
+          <div className="grid grid-cols-2 gap-16 sm:grid-cols-3">
+              <div className="flex flex-col gap-4">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/40">Discover</span>
+                  <Link href="/pricing" className="text-sm font-light text-muted-foreground transition-colors hover:text-primary">Membership</Link>
+                  <Link href="#experience" className="text-sm font-light text-muted-foreground transition-colors hover:text-primary">Experience</Link>
+              </div>
+              <div className="flex flex-col gap-4">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/40">Legals</span>
+                  <Link href="#" className="text-sm font-light text-muted-foreground transition-colors hover:text-primary">Privacy</Link>
+                  <Link href="#" className="text-sm font-light text-muted-foreground transition-colors hover:text-primary">Terms</Link>
+              </div>
+              <div className="flex flex-col gap-4">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/40">Social</span>
+                  <Link href="#" className="text-sm font-light text-muted-foreground transition-colors hover:text-primary">Twitter</Link>
+                  <Link href="#" className="text-sm font-light text-muted-foreground transition-colors hover:text-primary">Discord</Link>
+              </div>
+          </div>
         </div>
         
-        <p className="flex items-center gap-1 text-sm text-gray-500 text-center md:text-left">
-          Made with <Heart className="h-3 w-3 fill-rose-400 text-rose-400" /> by AlgoPhoenyx
-        </p>
-        
-        <div className="flex gap-6">
-            <Link href="#" className="text-sm font-medium text-gray-500 hover:text-pink-500 transition-colors">Privacy</Link>
-            <Link href="#" className="text-sm font-medium text-gray-500 hover:text-pink-500 transition-colors">Terms</Link>
-            <Link href="#" className="text-sm font-medium text-gray-500 hover:text-pink-500 transition-colors">Twitter</Link>
+        <div className="mt-20 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 md:flex-row">
+            <p className="text-[10px] tracking-widest uppercase text-muted-foreground/40">
+              © 2026 Miyona.ai. All rights reserved.
+            </p>
+            <p className="flex items-center gap-2 text-[10px] tracking-widest uppercase text-muted-foreground/40">
+              Crafted for Connection <Heart className="h-2.5 w-2.5 fill-primary/20 text-primary/40" />
+            </p>
         </div>
       </div>
     </footer>

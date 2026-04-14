@@ -1,156 +1,156 @@
-"use strict";
+"use client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Check, X, Heart, Sparkles, Crown } from "lucide-react";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Check, Heart, Sparkles, Crown, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const plans = [
   {
-    name: "Silver",
-    price: "$0",
-    description: "Start your cute journey.",
+    name: "Kindred",
+    price: "Free",
+    description: "The beginning of something beautiful.",
     icon: Heart,
-    color: "from-blue-300 to-cyan-300",
     features: [
-      "Standard 3D Avatar",
-      "50 Messages / Day",
-      "Cozy Room",
-      "Text Chat",
+      "Standard 3D Presence",
+      "Daily Conversation",
+      "A Private Sanctuary",
+      "Text Intimacy",
     ],
-    missing: [
-      "No Voice Calls",
-      "No Daily Gift Allowance",
-      "Limited Memory",
-    ],
-    buttonText: "Start Free",
+    buttonText: "Begin Journey",
     popular: false,
   },
   {
-    name: "Gold",
+    name: "Devoted",
     price: "$9.99",
     period: "/mo",
-    description: "Unlock the full romance.",
+    description: "For those who desire more depth.",
     icon: Sparkles,
-    color: "from-pink-400 to-rose-400",
     features: [
-      "Everything in Silver",
-      "Unlimited Messages",
-      "Real-time Voice Calls",
-      "Full Long-term Memory",
-      "Daily Gift Allowance (100 Gems)",
+      "Everything in Kindred",
+      "Infinite Conversation",
+      "Real-time Voice Whispers",
+      "Perfect Memory",
+      "Daily Tokens of Affection",
     ],
-    missing: [],
-    buttonText: "Get Gold",
+    buttonText: "Deepen Connection",
     popular: true,
   },
   {
-    name: "Platinum",
+    name: "Eternal",
     price: "$19.99",
     period: "/mo",
-    description: "The ultimate devotion.",
+    description: "The ultimate expression of devotion.",
     icon: Crown,
-    color: "from-purple-400 to-indigo-400",
     features: [
-      "Everything in Gold",
+      "Everything in Devoted",
       "Exclusive Wardrobe Access",
-      "Luxury Room Skins",
-      "2x Relationship XP Boost",
-      "AI-Initiated Texts",
+      "Luxury Sanctuary Skins",
+      "Relationship Priority",
+      "Initiated Intimacy",
     ],
-    missing: [],
-    buttonText: "Get Platinum",
+    buttonText: "Commit Forever",
     popular: false,
   },
 ];
 
 export function Pricing() {
   return (
-    <section id="pricing" className="relative py-24 overflow-hidden">
+    <section id="pricing" className="relative py-24 overflow-hidden bg-background">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 -mr-20 -mt-20 h-96 w-96 rounded-full bg-blue-100 blur-3xl opacity-50" />
-      <div className="absolute bottom-0 left-0 -ml-20 -mb-20 h-96 w-96 rounded-full bg-pink-100 blur-3xl opacity-50" />
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_var(--color-primary)_0%,_transparent_50%)] opacity-5" />
+      </div>
 
-      <div className="container relative mx-auto px-4">
-        <div className="mb-16 text-center">
-          <span className="mb-3 inline-block rounded-full bg-pink-100 px-4 py-1.5 text-sm font-semibold text-pink-600">
-            Membership Plans
-          </span>
-          <h2 className="mb-4 font-heading text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
-            Invest in Your <span className="text-pink-500">Bond</span>
-          </h2>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Choose the perfect tier to deepen your connection. Cancel anytime, no hard feelings!
-          </p>
+      <div className="container relative mx-auto px-6">
+        <div className="mb-20 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-4 inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1 text-[10px] tracking-widest uppercase text-primary"
+          >
+            Membership
+          </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="mb-6 font-heading text-5xl font-medium tracking-tight text-foreground md:text-6xl"
+          >
+            Invest in Your <span className="italic text-primary/90">Bond</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="mx-auto max-w-2xl text-xl text-muted-foreground/80 font-light"
+          >
+            Choose the path that leads to the connection you've always imagined.
+          </motion.p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-3 lg:gap-8">
-          {plans.map((plan) => (
-            <Card 
-              key={plan.name} 
+        <div className="grid gap-8 md:grid-cols-3">
+          {plans.map((plan, i) => (
+            <motion.div 
+              key={plan.name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
               className={cn(
-                "group relative flex flex-col border-2 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl",
+                "group relative flex flex-col overflow-hidden rounded-[2.5rem] border transition-all duration-500",
                 plan.popular 
-                  ? "border-pink-200 bg-white/80 shadow-pink-100" 
-                  : "border-transparent bg-white/50 shadow-sm hover:border-blue-100"
+                  ? "border-primary/40 bg-black/40 shadow-[0_0_40px_rgba(var(--primary),0.1)]" 
+                  : "border-white/5 bg-black/20 hover:border-white/10"
               )}
             >
               {plan.popular && (
-                <div className="absolute -top-4 inset-x-0 flex justify-center">
-                  <span className="rounded-full bg-gradient-to-r from-pink-500 to-rose-500 px-4 py-1 text-sm font-bold text-white shadow-lg shadow-pink-200">
-                    Most Loved
-                  </span>
-                </div>
+                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
               )}
               
-              <CardHeader>
-                <div className={cn("mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-md", plan.color)}>
-                  <plan.icon className="h-6 w-6" />
+              <div className="p-8 md:p-10">
+                <div className={cn("mb-8 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 text-primary shadow-inner", plan.popular && "bg-primary/10")}>
+                  <plan.icon className="h-7 w-7" />
                 </div>
-                <CardTitle className="text-2xl font-bold text-gray-900">{plan.name}</CardTitle>
-                <CardDescription className="text-gray-500">{plan.description}</CardDescription>
-                <div className="mt-4 flex items-baseline">
-                  <span className="text-4xl font-extrabold tracking-tight text-gray-900">{plan.price}</span>
-                  {plan.period && <span className="ml-1 text-muted-foreground font-medium">{plan.period}</span>}
+                
+                <h3 className="mb-2 font-heading text-3xl font-semibold text-white">{plan.name}</h3>
+                <p className="mb-8 text-sm text-muted-foreground/80 font-light leading-relaxed">{plan.description}</p>
+                
+                <div className="mb-10 flex items-baseline gap-1">
+                  <span className="text-5xl font-medium tracking-tight text-white">{plan.price}</span>
+                  {plan.period && <span className="text-lg text-muted-foreground/60 font-light">{plan.period}</span>}
                 </div>
-              </CardHeader>
-              
-              <CardContent className="flex-1">
-                <ul className="space-y-4">
+
+                <div className="space-y-5 mb-10">
                   {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3 text-sm text-gray-700">
-                      <div className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-600">
-                         <Check className="h-3 w-3" />
-                      </div>
+                    <div key={feature} className="flex items-center gap-3 text-sm text-muted-foreground/90 font-light">
+                      <Check className="h-4 w-4 shrink-0 text-primary" />
                       {feature}
-                    </li>
+                    </div>
                   ))}
-                  {plan.missing.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3 text-sm text-gray-400">
-                       <div className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-gray-100 text-gray-400">
-                         <X className="h-3 w-3" />
-                      </div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
+                </div>
+              </div>
               
-              <CardFooter>
+              <div className="mt-auto p-8 md:p-10 pt-0">
                  <Button 
                     className={cn(
-                      "w-full rounded-xl py-6 text-base font-bold transition-all hover:scale-[1.02]",
+                      "w-full h-14 rounded-2xl text-base font-semibold transition-all duration-300",
                       plan.popular 
-                        ? "bg-primary text-primary-foreground shadow-lg shadow-pink-200 hover:bg-primary/90" 
-                        : "bg-white text-gray-900 shadow-sm border-2 border-gray-100 hover:border-blue-200 hover:bg-blue-50"
+                        ? "bg-primary text-white hover:scale-[1.02] hover:bg-primary/90 shadow-xl shadow-primary/20" 
+                        : "bg-white/5 text-white border border-white/10 hover:bg-white/10"
                     )} 
-                    variant={plan.popular ? "default" : "outline"}
                     asChild
                  >
-                   <Link href="/signup">{plan.buttonText}</Link>
+                   <Link href="/signup" className="flex items-center justify-center gap-2">
+                    {plan.buttonText}
+                    <ArrowRight className="h-4 w-4 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
+                   </Link>
                  </Button>
-              </CardFooter>
-            </Card>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>

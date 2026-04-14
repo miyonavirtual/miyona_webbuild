@@ -29,6 +29,12 @@ public class MiyonaEyeContact : MonoBehaviour
     private float targetLookWeight = 0f;
     private float nextBlinkTime;
     private bool isBlinking = false;
+    
+    [HideInInspector]
+    public bool suspendBlinking = false; // Used by EmotionController to stop blinking when eyes are already closed
+    
+    [HideInInspector]
+    public bool suspendHeadTracking = false; // Used by Entrance script to stop her from looking at the camera while walking in
 
     void Start()
     {
@@ -55,7 +61,13 @@ public class MiyonaEyeContact : MonoBehaviour
 
     private void HandleHeadTracking()
     {
-        if (lookTarget == null) return;
+        if (lookTarget == null || suspendHeadTracking) 
+        {
+            // If tracking is suspended, smoothly return her head to the center
+            targetLookWeight = 0f;
+            currentLookWeight = Mathf.Lerp(currentLookWeight, targetLookWeight, Time.deltaTime * lookSpeed);
+            return;
+        }
 
         // Calculate the angle between where her body is facing and where the camera is
         Vector3 directionToTarget = lookTarget.position - transform.position;
@@ -104,6 +116,9 @@ public class MiyonaEyeContact : MonoBehaviour
     private void HandleBlinking()
     {
         if (vrmInstance == null || vrmInstance.Runtime == null) return;
+
+        // Skip blinking if we are suspending it (e.g. happy emotion with closed eyes)
+        if (suspendBlinking) return;
 
         if (!isBlinking && Time.time >= nextBlinkTime)
         {

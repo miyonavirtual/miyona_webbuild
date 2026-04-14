@@ -24,6 +24,10 @@ public class MiyonaEntrance : MonoBehaviour
             transform.LookAt(new Vector3(targetStandPosition.position.x, transform.position.y, targetStandPosition.position.z));
         }
 
+        // Lock camera and head tracking globally without needing Inspector links
+        MiyonaCameraOrbit.canMoveCamera = false;
+        MiyonaEyeContact.canLookAtCamera = false;
+
         // Step 0: Start Walking
         if (animator != null) animator.SetBool("IsWalking", true);
     }
@@ -74,6 +78,10 @@ public class MiyonaEntrance : MonoBehaviour
         // Wait a few seconds for the wave animation to finish before going fully idle
         // The Animator will transition to Idle automatically, this just stops script execution
         yield return new WaitForSeconds(3.0f); 
+
+        // Unlock camera and head tracking globally
+        MiyonaCameraOrbit.canMoveCamera = true;
+        MiyonaEyeContact.canLookAtCamera = true;
 
         currentStep = 3; // Idle forever
     }

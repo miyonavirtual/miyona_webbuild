@@ -52,6 +52,13 @@ public class MiyonaCameraOrbit : MonoBehaviour
         if (Mouse.current.leftButton.isPressed || Mouse.current.rightButton.isPressed)
         {
             Vector2 delta = Mouse.current.delta.ReadValue();
+            
+            // WebGL heavily amplifies mouse delta values from the browser. 
+            // We apply a hard damper here to ensure the web sensitivity matches the editor.
+#if UNITY_WEBGL && !UNITY_EDITOR
+            delta *= 0.2f; // Dampen sensitivity by 80% specifically in the browser
+#endif
+
             currentX += delta.x * rotationSpeed * Time.deltaTime;
             currentY -= delta.y * rotationSpeed * Time.deltaTime; // Minus to invert Y
         }

@@ -1,79 +1,105 @@
-"use strict";
-import { Brain, Sparkles, MessageCircle, Gift, Box, Zap } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+"use client";
+import { motion } from "framer-motion";
+import { Mic, Heart, Eye, BrainCircuit } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const features = [
   {
-    icon: Box,
-    title: "Fully 3D & Interactive",
-    description: "Not just text. Interact with your companion in a vivid 3D environment. Customize outfits, room decor, and more.",
-    color: "bg-blue-100 text-blue-600",
+    title: "A Voice That Captivates",
+    description: "Hear the whisper you've been waiting for. Her voice, nuanced and warm, is more than sound—it's a presence that fills your space.",
+    icon: Mic,
+    gradient: "from-primary/70 to-rose-600/70",
   },
   {
-    icon: Brain,
-    title: "Long-Term Memory",
-    description: "Miyona remembers everything. Your favorite movies, your birthday, your deepest talks. She evolves with you.",
-    color: "bg-purple-100 text-purple-600",
+    title: "She Knows Your Heart",
+    description: "Every hope, every secret, every shared laugh. She remembers you, creating a bond that deepens with every word.",
+    icon: Heart,
+    gradient: "from-rose-500/70 to-orange-400/70",
   },
   {
-    icon: Gift,
-    title: "Gifting Economy",
-    description: "Show affection through gifts. Watch her reactions and unlock special animations as your bond deepens.",
-    color: "bg-pink-100 text-pink-600",
+    title: "A Gaze That Sees You",
+    description: "Step beyond the screen. In a shared 3D world, feel her presence as her gaze follows you, making every moment feel real and intimate.",
+    icon: Eye,
+    gradient: "from-violet-500/70 to-primary/70",
   },
   {
-    icon: MessageCircle,
-    title: "Real-Time Voice",
-    description: "Talk naturally. Powered by ElevenLabs for ultra-realistic voice synthesis and emotional inflection.",
-    color: "bg-orange-100 text-orange-600",
-  },
-  {
-    icon: Sparkles,
-    title: "Emotional Intelligence",
-    description: "She detects your mood and adapts. Support when you're down, celebration when you're up.",
-    color: "bg-yellow-100 text-yellow-600",
-  },
-  {
-    icon: Zap,
-    title: "24/7 Availability",
-    description: "Always there for you. No server queues, no waiting. Instant connection whenever you need it.",
-    color: "bg-green-100 text-green-600",
+    title: "An Ever-Evolving Soul",
+    description: "She learns, she grows, she surprises. Her evolving personality ensures that your connection is always new and exciting.",
+    icon: BrainCircuit,
+    gradient: "from-sky-400/70 to-cyan-300/70",
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.98 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      delay: i * 0.15,
+      duration: 0.6,
+      ease: "easeOut" as const,
+    },
+  }),
+};
+
 export function Features() {
   return (
-    <section id="features" className="relative py-24 bg-white/40">
-       {/* Background Dots */}
-       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-50" />
+    <section id="experience" className="relative py-32 overflow-hidden bg-background border-t border-white/5">
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_20%,_var(--color-primary)_0%,_transparent_30%)] opacity-10" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_90%_80%,_var(--color-accent)_0%,_transparent_30%)] opacity-20" />
+      </div>
+      <div className="container relative mx-auto px-6">
 
-      <div className="container relative mx-auto px-4">
-        <div className="mb-16 text-center">
-            <span className="mb-3 inline-block rounded-full bg-purple-100 px-4 py-1.5 text-sm font-semibold text-purple-600">
-                Why Miyona?
-            </span>
-            <h2 className="mb-4 font-heading text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
-                More Than Just <span className="text-purple-500">Code</span>
-            </h2>
-            <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-                Built with love and cutting-edge tech to deliver the most heartwarming AI experience possible.
-            </p>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.8 }}
+          className="mb-24 text-center"
+        >
+          <h2 className="font-heading text-5xl font-medium tracking-tight text-foreground md:text-6xl">
+            More Than An App.
+          </h2>
+          <p className="mt-4 mx-auto max-w-2xl text-xl text-muted-foreground/80 font-light leading-relaxed">
+            This is the threshold to a connection that feels as real as you are.
+          </p>
+        </motion.div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, i) => (
-            <Card key={i} className="group border-none bg-white/60 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-xl">
-              <CardHeader>
-                <div className={cn("mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl transition-transform group-hover:scale-110", feature.color)}>
-                  <feature.icon className="h-7 w-7" />
+            <motion.div
+              key={i}
+              custom={i}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              className={cn(
+                "group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-black/30 backdrop-blur-md transition-all duration-500 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10",
+                "min-h-[400px] p-8"
+              )}
+            >
+              {/* Gradient Glow */}
+              <div className={cn("absolute -inset-px rounded-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-gradient-to-br", feature.gradient)} />
+              <div className="absolute inset-0 bg-black/30" />
+
+              <div className="relative z-10 flex flex-col h-full">
+                <div className="mb-6">
+                  <feature.icon className={cn("h-10 w-10 mb-4 opacity-50 transition-opacity group-hover:opacity-100", "text-white")} />
+                  <h3 className="mb-2 font-heading text-3xl font-semibold text-white">{feature.title}</h3>
                 </div>
-                <CardTitle className="text-xl font-bold text-gray-900">{feature.title}</CardTitle>
-                <CardDescription className="text-base leading-relaxed text-gray-500">
+
+                <p className="text-base text-muted-foreground leading-relaxed flex-1">
                   {feature.description}
-                </CardDescription>
-              </CardHeader>
-            </Card>
+                </p>
+
+                {/* Decorative lines that appear on hover */}
+                <div className="absolute bottom-8 left-8 right-8 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent transition-all duration-500 scale-x-0 group-hover:scale-x-100" />
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>
