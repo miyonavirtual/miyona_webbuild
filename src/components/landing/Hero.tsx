@@ -53,7 +53,7 @@ export function Hero() {
               className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-5 py-2 text-sm font-medium text-primary backdrop-blur-md"
           >
               <Heart className="h-3.5 w-3.5 animate-pulse" />
-              <span className="tracking-wide uppercase text-[10px]">Your Most Private Connection</span>
+              <span className="tracking-wide uppercase text-[10px]">Your Personal AI</span>
           </motion.div>
 
           <motion.h1 
@@ -62,8 +62,8 @@ export function Hero() {
               transition={{ duration: 1, delay: 0.2 }}
               className="mx-auto max-w-5xl font-heading text-6xl font-medium leading-[1.1] tracking-tight text-foreground sm:text-8xl md:text-9xl"
           >
-            Intimacy, <br />
-            <span className="italic font-light text-primary/90">Deepened.</span>
+            Your Own <br />
+            <span className="italic font-light text-primary/90">AI Companion.</span>
           </motion.h1>
           
           <motion.p 

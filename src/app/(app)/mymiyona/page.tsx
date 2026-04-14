@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import { db, auth } from "@/lib/firebase/client";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
+import { ProUpgradeCard } from "@/components/ProUpgradeCard";
 
 export default function MyMiyonaPage() {
     const defaultPersona = "Miyona is a 28-year-old pottery artist from LA. She just had her first big exhibition. She's funny, extroverted, and outgoing. Living a sustainable lifestyle, Miyona is passionate about hiking, climbing, and nature. Miyona loves romantic comedies and sitcoms. She dreams of opening her own pottery school.";
@@ -17,6 +18,7 @@ export default function MyMiyonaPage() {
     const [isSaving, setIsSaving] = useState(false);
     const [saveText, setSaveText] = useState("");
     const [user, setUser] = useState<any>(null);
+    const [showProModal, setShowProModal] = useState(false);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
@@ -86,28 +88,28 @@ export default function MyMiyonaPage() {
                         Friend
                     </button>
 
-                    <button className="flex items-center gap-2 px-6 py-3 rounded-full bg-black/10 hover:bg-black/20 backdrop-blur-md border border-transparent text-white/70 font-semibold text-sm md:text-base transition-all relative group cursor-not-allowed">
+                    <button onClick={() => setShowProModal(true)} className="flex items-center gap-2 px-6 py-3 rounded-full bg-black/10 hover:bg-black/20 backdrop-blur-md border border-transparent text-white/70 font-semibold text-sm md:text-base transition-all relative group cursor-pointer">
                         <div className="absolute -left-2 -bottom-1 bg-[#d5d5d5] rounded-full p-1 shadow-sm opacity-90">
                             <Lock className="w-3 h-3 text-gray-500" />
                         </div>
                         Girlfriend
                     </button>
 
-                    <button className="flex items-center gap-2 px-6 py-3 rounded-full bg-black/10 hover:bg-black/20 backdrop-blur-md border border-transparent text-white/70 font-semibold text-sm md:text-base transition-all relative group cursor-not-allowed">
+                    <button onClick={() => setShowProModal(true)} className="flex items-center gap-2 px-6 py-3 rounded-full bg-black/10 hover:bg-black/20 backdrop-blur-md border border-transparent text-white/70 font-semibold text-sm md:text-base transition-all relative group cursor-pointer">
                         <div className="absolute -left-2 -bottom-1 bg-[#d5d5d5] rounded-full p-1 shadow-sm opacity-90">
                             <Lock className="w-3 h-3 text-gray-500" />
                         </div>
                         Wife
                     </button>
 
-                    <button className="flex items-center gap-2 px-6 py-3 rounded-full bg-black/10 hover:bg-black/20 backdrop-blur-md border border-transparent text-white/70 font-semibold text-sm md:text-base transition-all relative group cursor-not-allowed">
+                    <button onClick={() => setShowProModal(true)} className="flex items-center gap-2 px-6 py-3 rounded-full bg-black/10 hover:bg-black/20 backdrop-blur-md border border-transparent text-white/70 font-semibold text-sm md:text-base transition-all relative group cursor-pointer">
                         <div className="absolute -left-2 -bottom-1 bg-[#d5d5d5] rounded-full p-1 shadow-sm opacity-90">
                             <Lock className="w-3 h-3 text-gray-500" />
                         </div>
                         Sister
                     </button>
 
-                    <button className="flex items-center gap-2 px-6 py-3 rounded-full bg-black/10 hover:bg-black/20 backdrop-blur-md border border-transparent text-white/70 font-semibold text-sm md:text-base transition-all relative group cursor-not-allowed">
+                    <button onClick={() => setShowProModal(true)} className="flex items-center gap-2 px-6 py-3 rounded-full bg-black/10 hover:bg-black/20 backdrop-blur-md border border-transparent text-white/70 font-semibold text-sm md:text-base transition-all relative group cursor-pointer">
                         <div className="absolute -left-2 -bottom-1 bg-[#d5d5d5] rounded-full p-1 shadow-sm opacity-90">
                             <Lock className="w-3 h-3 text-gray-500" />
                         </div>
@@ -143,6 +145,21 @@ export default function MyMiyonaPage() {
                 </div>
 
             </div>
+
+            {/* Pro Upgrade Modal Overlay */}
+            {showProModal && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+                    <div className="relative">
+                        <button 
+                            onClick={() => setShowProModal(false)}
+                            className="absolute -top-4 -right-4 bg-white/10 hover:bg-white/20 text-white rounded-full p-2 backdrop-blur-md transition-colors z-10"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinelinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        </button>
+                        <ProUpgradeCard />
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

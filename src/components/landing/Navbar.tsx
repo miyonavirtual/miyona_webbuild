@@ -11,11 +11,11 @@ export function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed top-0 z-50 w-full border-b border-white/5 bg-background/60 backdrop-blur-xl"
+      className="fixed top-0 z-50 w-full bg-background/60 backdrop-blur-xl"
     >
       <div className="container mx-auto flex h-24 items-center justify-between px-6">
         {/* Logo Area */}
-        <Link href="/" className="group flex items-center gap-3 transition-opacity hover:opacity-90">
+        <Link href="/" className="absolute left-1/2 -translate-x-1/2 group flex items-center gap-3 transition-opacity hover:opacity-90">
           <div className="relative flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 shadow-[0_0_15px_rgba(var(--primary),0.2)]">
             <Heart className="h-4 w-4 text-primary animate-pulse" />
           </div>
