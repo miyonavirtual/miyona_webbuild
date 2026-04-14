@@ -282,7 +282,35 @@ export default function ChatClient() {
                 .catch(e => console.error("Memory extraction error", e));
             }
             
-            speakingEndTime.current = Date.now() + (reply.length * 60 + 500);
+            // Generate and play TTS (ElevenLabs)
+            try {
+                const ttsRes = await fetch("/api/voice/tts", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ text: reply, emotion: reaction }),
+                });
+                
+                if (ttsRes.ok) {
+                    const audioBlob = await ttsRes.blob();
+                    const audioUrl = URL.createObjectURL(audioBlob);
+                    const audio = new Audio(audioUrl);
+                    
+                    // Start lipsync
+                    speakingEndTime.current = Date.now() + 1000 * 60 * 60; // Keep open until ended
+                    
+                    audio.onended = () => {
+                        speakingEndTime.current = 0; // Stop lipsync
+                        URL.revokeObjectURL(audioUrl);
+                    };
+                    
+                    await audio.play();
+                } else {
+                    speakingEndTime.current = Date.now() + (reply.length * 60 + 500); // Fallback
+                }
+            } catch (err) {
+                console.error("TTS fetch error in ChatClient:", err);
+                speakingEndTime.current = Date.now() + (reply.length * 60 + 500); // Fallback
+            }
         } catch {
             const errorReply = "Something felt off just now... try again?";
             if (!user) {

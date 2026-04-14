@@ -31,31 +31,32 @@ export async function POST(req: Request) {
 
         const aiTextResponse = groqResponse.choices[0]?.message?.content || "I'm sorry, I didn't quite catch that.";
 
-        // 2. Convert AI Text Response to Speech using Deepgram TTS
-        const deepgram = createClient(process.env.DEEPGRAM_API_KEY!);
+        // 2. Convert AI Text Response to Speech using ElevenLabs TTS
+        const ELEVENLABS_API_KEY = process.env.ELEVENLABS_API_KEY || "sk_fc0a66814449a77f416a8cf1652d8c5a56411c9513d4daec";
+        const voiceId = "EXAVITQu4vr4xnSDxMaL";
 
-        const ttsResponse = await deepgram.speak.request(
-            { text: aiTextResponse },
-            {
-                model: "aura-asteria-en", // Asteria is a good female conversational voice
-            }
-        );
+        const ttsResponse = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}?output_format=mp3_44100_128`, {
+            method: "POST",
+            headers: {
+                "xi-api-key": ELEVENLABS_API_KEY,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                text: aiTextResponse,
+                model_id: "eleven_turbo_v2_5",
+                voice_settings: {
+                    stability: 0.5,
+                    similarity_boost: 0.75,
+                }
+            }),
+        });
 
-        const stream = await ttsResponse.getStream();
-
-        if (!stream) {
-            throw new Error("Failed to get audio stream from Deepgram");
+        if (!ttsResponse.ok) {
+            throw new Error(`Failed to get audio stream from ElevenLabs: ${await ttsResponse.text()}`);
         }
 
-        // Convert the stream to a buffer
-        const reader = stream.getReader();
-        const chunks = [];
-        while (true) {
-            const { done, value } = await reader.read();
-            if (done) break;
-            chunks.push(value);
-        }
-        const audioBuffer = Buffer.concat(chunks);
+        const arrayBuffer = await ttsResponse.arrayBuffer();
+        const audioBuffer = Buffer.from(arrayBuffer);
 
         // Return both the audio and the text (so we can log it or display it if needed)
         return new NextResponse(audioBuffer, {
