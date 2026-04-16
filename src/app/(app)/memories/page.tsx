@@ -94,7 +94,7 @@ export default function MemoriesPage() {
         });
 
     return (
-        <div className="relative h-screen w-full overflow-hidden bg-background text-foreground font-sans pt-24 md:pt-32">
+        <div className="relative h-screen w-full overflow-hidden bg-background text-foreground font-sans pt-14 md:pt-32">
             <div className="absolute inset-0 z-0 bg-background overflow-hidden pointer-events-none">
                 <div className="absolute inset-0 -z-10">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_var(--color-primary)_0%,_transparent_60%)] opacity-10" />
@@ -104,7 +104,7 @@ export default function MemoriesPage() {
 
             <NavBar />
 
-            <div className="relative z-10 w-full max-w-7xl mx-auto h-[calc(100vh-140px)] flex flex-col md:flex-row gap-6 px-4 md:px-8">
+            <div className="relative z-10 w-full max-w-7xl mx-auto h-[calc(100vh-56px)] md:h-[calc(100vh-140px)] flex flex-col md:flex-row gap-6 px-4 md:px-8">
                 {/* Left Master Navigation */}
                 <div className="w-full md:w-64 flex flex-col gap-2 shrink-0">
                     <div className="bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl p-4 flex md:flex-col gap-2 shadow-2xl">

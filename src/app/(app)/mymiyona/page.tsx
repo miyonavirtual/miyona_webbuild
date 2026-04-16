@@ -58,7 +58,7 @@ export default function MyMiyonaPage() {
     };
 
     return (
-        <div className="relative min-h-screen w-full overflow-hidden bg-[#aca0bd] text-white font-sans pt-24 pb-12">
+        <div className="relative min-h-screen w-full overflow-hidden bg-[#aca0bd] text-white font-sans pt-14 md:pt-24 pb-12">
             {/* Background Gradients to match the purplish/blueish soft look */}
             <div className="absolute inset-0 z-0 bg-[#aca0bd]">
                 <div className="absolute top-[-10%] left-[-10%] w-[120%] h-[120%] bg-[radial-gradient(circle_at_20%_30%,_rgba(100,110,160,0.5)_0%,_transparent_50%)] blur-3xl pointer-events-none" />
