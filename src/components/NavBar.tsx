@@ -103,7 +103,7 @@ export function NavBar({ rightContent }: NavBarProps) {
                                 }`}
                         >
                             <Sparkles className={`h-4 w-4 mr-2 ${isMyMiyona ? "text-primary-foreground" : "text-primary/70"}`} />
-                            My Miyona
+                            My Luvoia
                         </Button>
                     </Link>
                 </div>

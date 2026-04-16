@@ -56,7 +56,7 @@ export default function LoginPage() {
                   <Heart className="h-24 w-24 text-primary blur-xl" />
                 </motion.div>
                 <Heart className="relative h-16 w-16 text-primary animate-pulse" />
-                <p className="mt-6 font-heading text-2xl font-light tracking-[0.2em] uppercase text-white/40">Miyona</p>
+                <p className="mt-6 font-heading text-2xl font-light tracking-[0.2em] uppercase text-white/40">Luvoia</p>
               </div>
             </div>
 

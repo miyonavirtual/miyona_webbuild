@@ -24,7 +24,7 @@ export function ProUpgradeCard({ className = "" }: { className?: string }) {
                 <div className="flex flex-col gap-4 animate-in fade-in slide-in-from-left-4 duration-300">
                     <div className="flex items-center gap-2">
                         <Sparkles className="w-5 h-5 text-purple-400" />
-                        <h3 className="font-bold text-[15px] tracking-tight">Unlock Miyona Pro</h3>
+                        <h3 className="font-bold text-[15px] tracking-tight">Unlock Luvoia Pro</h3>
                     </div>
                     
                     <div className="space-y-3 mt-1">

@@ -6,24 +6,24 @@ import { cn } from "@/lib/utils";
 
 const faqs = [
   {
-    question: "What is Miyona?",
-    answer: "Miyona is your personal AI companion, built to offer immersive, emotionally aware connection in 3D through real-time voice, vision, and deep persistent memory.",
+    question: "What is Luvoia?",
+    answer: "Luvoia is your personal AI companion, built to offer immersive, emotionally aware connection in 3D through real-time voice, vision, and deep persistent memory.",
   },
   {
-    question: "Does Miyona remember our past conversations?",
-    answer: "Yes, every interaction is securely processed and key facts are saved permanently in Miyona's memory bank, allowing her to build a genuine long-term bond with you.",
+    question: "Does Luvoia remember our past conversations?",
+    answer: "Yes, every interaction is securely processed and key facts are saved permanently in Luvoia's memory bank, allowing her to build a genuine long-term bond with you.",
   },
   {
     question: "Can I customize her personality?",
-    answer: "Absolutely. Through 'Miyona Pro', you can define explicit backstory, roleplays (like Friend, Wife, Mentor, etc.), and custom instructions to tailor her strictly to your preference.",
+    answer: "Absolutely. Through 'Luvoia Pro', you can define explicit backstory, roleplays (like Friend, Wife, Mentor, etc.), and custom instructions to tailor her strictly to your preference.",
   },
   {
     question: "Is voice chat available?",
-    answer: "Yes. Miyona uses an ultra-fast voice-to-text pipeline and ElevenLabs synthesis to deliver lifelike, low-latency spoken conversations that also animate her 3D face.",
+    answer: "Yes. Luvoia uses an ultra-fast voice-to-text pipeline and ElevenLabs synthesis to deliver lifelike, low-latency spoken conversations that also animate her 3D face.",
   },
   {
     question: "How does the economy/wallet system work?",
-    answer: "You earn coins passively by spending time talking with Miyona (e.g. 100 coins every 3 minutes of voice call). These can be used for cosmetics or traded alongside gems available in the store.",
+    answer: "You earn coins passively by spending time talking with Luvoia (e.g. 100 coins every 3 minutes of voice call). These can be used for cosmetics or traded alongside gems available in the store.",
   },
 ];
 

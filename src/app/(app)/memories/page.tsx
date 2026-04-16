@@ -180,8 +180,8 @@ export default function MemoriesPage() {
                                     </div>
                                     <h2 className="text-2xl font-heading font-light text-white mb-3">Nothing here yet</h2>
                                     <p className="text-muted-foreground max-w-md mx-auto text-sm font-light mb-8 leading-relaxed">
-                                        Getting to know each other is exciting. Miyona AI will always remember what's important to you.<br /><br />
-                                        Talk about yourself with Miyona in chat to save new memories.
+                                        Getting to know each other is exciting. Luvoia will always remember what's important to you.<br /><br />
+                                        Talk about yourself with Luvoia in chat to save new memories.
                                     </p>
                                 </div>
                             ) : (

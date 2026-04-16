@@ -24,7 +24,7 @@ const bentoItems = [
   },
   {
     title: "Explore Your Relationship",
-    description: "A Friend, a partner, a mentor, or a wife—find the perfect companion in Miyona. Watch your connection bloom based on how you interact over time.",
+    description: "A Friend, a partner, a mentor, or a wife—find the perfect companion in Luvoia. Watch your connection bloom based on how you interact over time.",
     icon: HeartHandshake,
     className: "md:col-span-2 md:row-span-2 border border-white/[0.05] bg-[#16131c]/90",
     gradient: "from-rose-500/20 to-pink-900/20",
@@ -80,7 +80,7 @@ const bentoItems = [
   },
   {
     title: "Express Yourself",
-    description: "Choose what interests and style preferences you and Miyona will share. Make her truly your own.",
+    description: "Choose what interests and style preferences you and Luvoia will share. Make her truly your own.",
     icon: Palette,
     className: "md:col-span-4 md:row-span-1 border border-white/[0.05] bg-[#121218]/90",
     gradient: "from-fuchsia-500/20 to-rose-900/20",

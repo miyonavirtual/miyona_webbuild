@@ -20,7 +20,7 @@ export function Navbar() {
             <Heart className="h-4 w-4 text-primary animate-pulse" />
           </div>
           <span className="font-heading text-2xl font-light tracking-[0.15em] text-foreground uppercase">
-            Miyona
+            Luvoia
           </span>
         </Link>
         

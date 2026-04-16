@@ -9,7 +9,7 @@ export function Footer() {
         <div className="flex flex-col items-center justify-between gap-12 md:flex-row md:items-start">
           <div className="flex flex-col items-center gap-6 md:items-start">
               <Link href="/" className="font-heading text-3xl font-light tracking-widest text-foreground uppercase">
-                  Miyona
+                  Luvoia
               </Link>
               <p className="text-center text-sm font-light leading-relaxed text-muted-foreground/60 md:text-left max-w-xs">
                   Where intimacy meets technology, and technology fades into the background.
@@ -37,7 +37,7 @@ export function Footer() {
         
         <div className="mt-20 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 md:flex-row">
             <p className="text-[10px] tracking-widest uppercase text-muted-foreground/40">
-              © 2026 Miyona.ai. All rights reserved.
+              © 2026 Luvoia.ai. All rights reserved.
             </p>
             <p className="flex items-center gap-2 text-[10px] tracking-widest uppercase text-muted-foreground/40">
               Crafted for Connection <Heart className="h-2.5 w-2.5 fill-primary/20 text-primary/40" />

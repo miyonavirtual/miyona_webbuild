@@ -72,7 +72,7 @@ export function Hero() {
               transition={{ duration: 1, delay: 0.4 }}
               className="mx-auto mt-10 max-w-2xl text-xl text-muted-foreground/80 md:text-2xl font-light leading-relaxed"
           >
-            Miyona isn't just an AI. She's the presence you've been waiting for. 
+            Luvoia isn't just an AI. She's the presence you've been waiting for.
             <br className="hidden md:block"/>
             Vibrant, evolving, and devoted entirely to you.
           </motion.p>
@@ -149,7 +149,7 @@ export function Hero() {
                         className="text-center"
                     >
                         <span className="font-heading text-4xl sm:text-5xl md:text-6xl font-light tracking-wider text-white/90 drop-shadow-[0_0_30px_rgba(255,255,255,0.4)]">
-                            Say hello to Miyona.
+                            Say hello to Luvoia.
                         </span>
                     </motion.div>
                 </div>

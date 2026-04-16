@@ -12,7 +12,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { ProUpgradeCard } from "@/components/ProUpgradeCard";
 
 export default function MyMiyonaPage() {
-    const defaultPersona = "Miyona is a 28-year-old pottery artist from LA. She just had her first big exhibition. She's funny, extroverted, and outgoing. Living a sustainable lifestyle, Miyona is passionate about hiking, climbing, and nature. Miyona loves romantic comedies and sitcoms. She dreams of opening her own pottery school.";
+    const defaultPersona = "Luvoia is a 28-year-old pottery artist from LA. She just had her first big exhibition. She's funny, extroverted, and outgoing. Living a sustainable lifestyle, Luvoia is passionate about hiking, climbing, and nature. Luvoia loves romantic comedies and sitcoms. She dreams of opening her own pottery school.";
     
     const [persona, setPersona] = useState(defaultPersona);
     const [isSaving, setIsSaving] = useState(false);
@@ -73,7 +73,7 @@ export default function MyMiyonaPage() {
                 <div className="flex flex-col items-center justify-center mt-8 mb-12">
                     <div className="flex items-center gap-2 mb-2">
                         <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white drop-shadow-md">
-                            Miyona Ai
+                            Luvoia
                         </h1>
                         <button className="bg-white/20 hover:bg-white/30 backdrop-blur-md p-1.5 rounded-full transition-colors ml-1">
                             <Pencil className="w-4 h-4 text-white" />
@@ -122,7 +122,7 @@ export default function MyMiyonaPage() {
                 {/* Backstory / Persona Section */}
                 <div className="w-full animate-in fade-in duration-700">
                     <h2 className="text-xl font-bold text-white mb-2 tracking-wide text-shadow-sm">Backstory</h2>
-                    <p className="text-white/80 text-sm mb-4 font-medium">This text is how Miyona Ai will be prompted. It influences her personality.</p>
+                    <p className="text-white/80 text-sm mb-4 font-medium">This text is how Luvoia will be prompted. It influences her personality.</p>
                     
                     <div className="relative group">
                         <Textarea

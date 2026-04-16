@@ -50,7 +50,7 @@ export default function CallClient() {
                         await setDoc(walletRef, { gems: 17, coins: 2100 }, { merge: true });
                     }
                     toast.success("100 Coins Earned!", {
-                        description: "Thanks for spending 3 minutes with Miyona.",
+                        description: "Thanks for spending 3 minutes with Luvoia.",
                         icon: "🪙"
                     });
                 } catch (error) {
@@ -396,7 +396,7 @@ export default function CallClient() {
                         <div className="flex flex-col items-center gap-6 p-8 rounded-3xl bg-zinc-900/50 border border-white/5 shadow-2xl max-w-sm w-full animate-in fade-in zoom-in duration-500">
                             <div className="w-12 h-12 border-[3px] border-primary/30 border-t-primary rounded-full animate-spin"></div>
                             <div className="text-center space-y-3 w-full">
-                                <p className="text-lg font-light tracking-tight text-white/90">Connecting to Miyona...</p>
+                                <p className="text-lg font-light tracking-tight text-white/90">Connecting to Luvoia...</p>
                                 <div className="w-full bg-white/5 rounded-full h-1 overflow-hidden">
                                     <div className="bg-primary h-full transition-all duration-300 ease-out" style={{ width: `${loadingPercentage}%` }}></div>
                                 </div>
@@ -422,7 +422,7 @@ export default function CallClient() {
                         : 'bg-white/10 border border-white/20 text-white/90 self-start text-left'
                     }`}>
                         <p className="text-[10px] font-bold uppercase tracking-widest opacity-50 mb-1">
-                            {cap.role === 'user' ? 'You' : 'Miyona'}
+                            {cap.role === 'user' ? 'You' : 'Luvoia'}
                         </p>
                         <p className="text-sm leading-relaxed font-medium">{cap.text}</p>
                     </div>

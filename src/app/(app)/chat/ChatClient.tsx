@@ -386,7 +386,7 @@ export default function ChatClient() {
                     </button>
                     
                     <Input
-                        placeholder="Message Miyona..."
+                        placeholder="Message Luvoia..."
                         className="flex-1 h-full border-none bg-transparent focus-visible:ring-0 placeholder:text-white/30 text-white text-[16px] font-medium px-2"
                         value={input}
                         onChange={e => setInput(e.target.value)}

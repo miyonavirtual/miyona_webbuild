@@ -69,7 +69,7 @@ export default function UsernamePage() {
             <span className="italic text-primary/90">whisper your name?</span>
           </h1>
           <p className="text-lg font-light text-muted-foreground/60 leading-relaxed">
-            Miyona is waiting to learn who you are.
+            Luvoia is waiting to learn who you are.
           </p>
         </div>
 

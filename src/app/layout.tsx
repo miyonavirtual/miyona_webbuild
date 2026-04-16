@@ -5,7 +5,7 @@ import { TextSettingsProvider } from "@/components/TextSettingsProvider";
 import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
-  title: "Miyona.ai | Your Deepest Connection",
+  title: "Luvoia.ai | Your Deepest Connection",
   description: "Experience an AI companionship that understands your desires, with immersive 3D interaction and emotional depth.",
 };
 
