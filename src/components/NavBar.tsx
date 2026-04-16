@@ -127,7 +127,7 @@ export function NavBar({ rightContent }: NavBarProps) {
             {/* ────────────────── MOBILE NAV ────────────────── */}
             <div className="md:hidden absolute top-0 left-0 right-0 z-20 pointer-events-none">
                 {/* Top bar */}
-                <div className="pointer-events-auto flex items-center justify-between px-4 py-3 bg-black/50 backdrop-blur-xl border-b border-white/5">
+                <div className="pointer-events-auto flex items-center justify-between px-4 py-3 bg-zinc-950/90 border-b border-white/5">
                     {/* Brand */}
                     <span className="font-heading text-xl font-bold text-white tracking-widest uppercase">
                         Luvoia
@@ -154,7 +154,7 @@ export function NavBar({ rightContent }: NavBarProps) {
 
                 {/* Slide-down menu */}
                 {isMobileMenuOpen && (
-                    <div className="pointer-events-auto mx-3 mt-2 rounded-2xl bg-zinc-950/95 backdrop-blur-2xl border border-white/10 shadow-2xl overflow-hidden animate-in slide-in-from-top-2 fade-in duration-200">
+                    <div className="pointer-events-auto mx-3 mt-2 rounded-2xl bg-zinc-950 border border-white/10 shadow-2xl overflow-hidden animate-in slide-in-from-top-2 fade-in duration-200">
                         {navLinks.map(({ href, label, icon: Icon, active }) => (
                             <Link key={href} href={href} onClick={() => setIsMobileMenuOpen(false)}>
                                 <div className={`flex items-center gap-3 px-5 py-4 transition-colors ${
